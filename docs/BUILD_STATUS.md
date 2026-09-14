@@ -17,6 +17,7 @@
 | **Stage 5** | Fulfilment, Escrow & Handover | **Completed** | Persistent demo banking escrow ledger, buyer transport registration, single-use pickup OTP, digital scale weight verification, triple confirmation, automated seller release |
 | **Stage 6** | Support, Exceptions & Chatbot | **Completed** | Grievance ticketing & escalation, staged cancellation rules, AI Help Chatbot with approved guidelines and Gemini support, immutable audit trail |
 | **Stage 7** | End-to-End Verification | **Completed** | Full automated E2E test suite (`scripts/test-workflows.mjs`) ran and passed all 7 stages cleanly |
+| **Stage 8** | Dynamic Logistics & Production Deployment | **Completed** | Dynamic freight engine, 6 vehicle categories, 5 verified logistics partners, live on Vercel (`https://cyber-shield-marketplace.vercel.app`) |
 
 ---
 
