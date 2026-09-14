@@ -1,0 +1,1142 @@
+{
+  "officers": [
+    {
+      "id": "off-1",
+      "officerId": "usr-officer-1",
+      "officerName": "Dr. Anbarasan V.",
+      "roleTitle": "Village Agriculture Officer",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "taluka": "Budalur",
+      "phone": "+91 94431 82910",
+      "email": "anbarasan.agri@tn.gov.in",
+      "officeAddress": "Agri Extension Center, Main Road, Budalur, Thanjavur - 613602",
+      "backupOfficerName": "Smt. K. Revathi (Extension Officer)"
+    },
+    {
+      "id": "off-2",
+      "officerId": "usr-officer-2",
+      "officerName": "Smt. Meenakshi Sundaram",
+      "roleTitle": "Taluka Agriculture Officer",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "taluka": "Thanjavur",
+      "phone": "+91 94435 91823",
+      "email": "meenakshi.s@tn.gov.in",
+      "officeAddress": "Taluka Agricultural Office, Court Road, Thanjavur - 613001",
+      "backupOfficerName": "Shri. S. Ramanathan"
+    },
+    {
+      "id": "off-3",
+      "officerId": "usr-officer-3",
+      "officerName": "Shri. K. Balakrishnan, IAS",
+      "roleTitle": "District Agricultural Officer",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "phone": "+91 94440 10293",
+      "email": "dao.thanjavur@tn.gov.in",
+      "officeAddress": "District Collectorate Complex, Trichy Road, Thanjavur - 613010"
+    },
+    {
+      "id": "off-4",
+      "officerId": "usr-officer-4",
+      "officerName": "Dr. Vijay Deshmukh",
+      "roleTitle": "Taluka Agriculture Officer",
+      "state": "Maharashtra",
+      "district": "Nashik",
+      "taluka": "Niphad",
+      "phone": "+91 98220 44192",
+      "email": "v.deshmukh@agri.maharashtra.gov.in",
+      "officeAddress": "Taluka Krishi Bhavan, Station Road, Niphad, Nashik - 422303"
+    },
+    {
+      "id": "off-5",
+      "officerId": "usr-officer-5",
+      "officerName": "Harpreet Singh Sidhu",
+      "roleTitle": "Taluka Agriculture Officer",
+      "state": "Punjab",
+      "district": "Ludhiana",
+      "taluka": "Jagraon",
+      "phone": "+91 98761 22910",
+      "email": "sidhu.agri@punjab.gov.in",
+      "officeAddress": "Block Agricultural Office, Tehsil Complex, Jagraon - 142026"
+    }
+  ],
+  "catalogue": [
+    {
+      "id": "crop-paddy",
+      "cropName": "Paddy / Rice",
+      "category": "Cereals",
+      "varieties": [
+        {
+          "name": "Ponni (Raw)",
+          "productForm": "Paddy"
+        },
+        {
+          "name": "Ponni (Boiled)",
+          "productForm": "Milled Rice"
+        },
+        {
+          "name": "Sona Masoori",
+          "productForm": "Paddy"
+        },
+        {
+          "name": "Basmati 1121",
+          "productForm": "Paddy"
+        },
+        {
+          "name": "Basmati Traditional",
+          "productForm": "Milled Rice"
+        },
+        {
+          "name": "IR-64",
+          "productForm": "Paddy"
+        }
+      ],
+      "referencePricePerKg": 24.5,
+      "referenceSource": "Agmarknet / NAFED MSP Reference (2026)",
+      "referenceDate": "2026-09-10"
+    },
+    {
+      "id": "crop-wheat",
+      "cropName": "Wheat",
+      "category": "Cereals",
+      "varieties": [
+        {
+          "name": "Sharbati A-Grade",
+          "productForm": "Grain"
+        },
+        {
+          "name": "Lokwan",
+          "productForm": "Grain"
+        },
+        {
+          "name": "HD-2967",
+          "productForm": "Grain"
+        }
+      ],
+      "referencePricePerKg": 26,
+      "referenceSource": "CACP / Mandi Modal Average",
+      "referenceDate": "2026-09-12"
+    },
+    {
+      "id": "crop-tomato",
+      "cropName": "Tomato",
+      "category": "Vegetables",
+      "varieties": [
+        {
+          "name": "Shivam Hybrid",
+          "productForm": "Fresh Produce"
+        },
+        {
+          "name": "Vaishnavi Semi-Ripe",
+          "productForm": "Fresh Produce"
+        },
+        {
+          "name": "Desi Country Tomato",
+          "productForm": "Fresh Produce"
+        }
+      ],
+      "referencePricePerKg": 22,
+      "referenceSource": "Nashik APMC Daily Bulletin",
+      "referenceDate": "2026-09-13"
+    },
+    {
+      "id": "crop-onion",
+      "cropName": "Onion",
+      "category": "Vegetables",
+      "varieties": [
+        {
+          "name": "Nashik Red Garwa",
+          "productForm": "Cured Bulbs"
+        },
+        {
+          "name": "Pune Fursungi",
+          "productForm": "Cured Bulbs"
+        },
+        {
+          "name": "Bellary Medium",
+          "productForm": "Cured Bulbs"
+        }
+      ],
+      "referencePricePerKg": 28,
+      "referenceSource": "Lasalgaon Mandi Average",
+      "referenceDate": "2026-09-12"
+    },
+    {
+      "id": "crop-banana",
+      "cropName": "Banana (Sold by Kg Weight)",
+      "category": "Fruits",
+      "varieties": [
+        {
+          "name": "Grand Naine (G9)",
+          "productForm": "Green Bunches (Weighed in kg)"
+        },
+        {
+          "name": "Robusta",
+          "productForm": "Green Bunches (Weighed in kg)"
+        },
+        {
+          "name": "Red Banana (Sevvazhai)",
+          "productForm": "Semi-Ripe (Weighed in kg)"
+        },
+        {
+          "name": "Nendran",
+          "productForm": "Culinary Grade (Weighed in kg)"
+        }
+      ],
+      "referencePricePerKg": 18.5,
+      "referenceSource": "Theni Banana Growers Association",
+      "referenceDate": "2026-09-11"
+    },
+    {
+      "id": "crop-coconut",
+      "cropName": "Coconut (Sold by Kg Weight)",
+      "category": "Cash Crops",
+      "varieties": [
+        {
+          "name": "Pollachi Dehusked Dry",
+          "productForm": "Weighed in kg (Dehusked)"
+        },
+        {
+          "name": "West Coast Tall",
+          "productForm": "Weighed in kg (Dehusked)"
+        },
+        {
+          "name": "Tiptur Grade-1",
+          "productForm": "Weighed in kg (Dehusked)"
+        }
+      ],
+      "referencePricePerKg": 34,
+      "referenceSource": "Coconut Development Board Cochin",
+      "referenceDate": "2026-09-12"
+    },
+    {
+      "id": "crop-turmeric",
+      "cropName": "Turmeric",
+      "category": "Cash Crops",
+      "varieties": [
+        {
+          "name": "Salem Finger (Curcumin 4.5%+)",
+          "productForm": "Dried Finger"
+        },
+        {
+          "name": "Erode Bulb",
+          "productForm": "Dried Bulb"
+        },
+        {
+          "name": "Nizamabad Polished",
+          "productForm": "Polished Finger"
+        }
+      ],
+      "referencePricePerKg": 145,
+      "referenceSource": "Erode Turmeric Merchants Association",
+      "referenceDate": "2026-09-10"
+    },
+    {
+      "id": "crop-chana",
+      "cropName": "Bengal Gram / Chana",
+      "category": "Pulses",
+      "varieties": [
+        {
+          "name": "Kabuli Bold (Dollar)",
+          "productForm": "Dried Grain"
+        },
+        {
+          "name": "Desi Brown Chana",
+          "productForm": "Dried Grain"
+        }
+      ],
+      "referencePricePerKg": 62,
+      "referenceSource": "NAFED Procurement Price",
+      "referenceDate": "2026-09-08"
+    }
+  ],
+  "farmers": [
+    {
+      "id": "fmr-1",
+      "fullName": "Murugan Karuppasamy",
+      "phone": "+91 98421 77301",
+      "address": "Survey No. 114/2B, South Street, Thiruvaiyaru",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "taluka": "Budalur",
+      "village": "Thiruvaiyaru",
+      "gpsCoordinates": {
+        "lat": 10.8812,
+        "lng": 79.1034
+      },
+      "landSizeAcres": 1.5,
+      "ownershipType": "Owner",
+      "primaryCrops": [
+        "Paddy / Rice",
+        "Banana (Sold by Kg Weight)"
+      ],
+      "expectedYieldKg": 3200,
+      "bankAccountMasked": "•••• •••• 4912",
+      "ifscCode": "IOBA0001428",
+      "bankName": "Indian Overseas Bank, Thiruvaiyaru",
+      "status": "verified",
+      "assignedOfficerId": "usr-officer-1",
+      "assignedOfficerName": "Dr. Anbarasan V.",
+      "isActivated": true,
+      "fieldNotes": "Field inspected on 2026-08-20. Healthy crop canopy with canal irrigation. Good quality grain setting.",
+      "documentProofs": [
+        "land_patta_114_2b.pdf",
+        "aadhaar_card_masked.pdf"
+      ],
+      "fieldPhotos": [
+        "field_photo_paddy_inspection.jpg"
+      ],
+      "createdAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "fmr-2",
+      "fullName": "Lakshmi Bai Subramanian",
+      "phone": "+91 98422 99410",
+      "address": "Survey No. 45/1A, Kaveri Canal Road, Budalur",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "taluka": "Budalur",
+      "village": "Budalur",
+      "gpsCoordinates": {
+        "lat": 10.8124,
+        "lng": 79.0341
+      },
+      "landSizeAcres": 2,
+      "ownershipType": "Valid Lease",
+      "primaryCrops": [
+        "Paddy / Rice"
+      ],
+      "expectedYieldKg": 4500,
+      "bankAccountMasked": "•••• •••• 8103",
+      "ifscCode": "SBIN0003810",
+      "bankName": "State Bank of India, Budalur",
+      "status": "verified",
+      "assignedOfficerId": "usr-officer-1",
+      "assignedOfficerName": "Dr. Anbarasan V.",
+      "isActivated": true,
+      "fieldNotes": "Registered lease agreement verified. High yield Ponni variety under System of Rice Intensification (SRI).",
+      "documentProofs": [
+        "registered_lease_deed.pdf"
+      ],
+      "fieldPhotos": [
+        "field_inspection_lakshmi.jpg"
+      ],
+      "createdAt": "2026-08-22T14:15:00Z"
+    },
+    {
+      "id": "fmr-3",
+      "fullName": "Rameshwar Bhaurao Patil",
+      "phone": "+91 98221 34812",
+      "address": "Gat No. 89, Pimpalgaon Baswant, Niphad",
+      "state": "Maharashtra",
+      "district": "Nashik",
+      "taluka": "Niphad",
+      "village": "Pimpalgaon Baswant",
+      "gpsCoordinates": {
+        "lat": 20.1704,
+        "lng": 73.9856
+      },
+      "landSizeAcres": 12.5,
+      "ownershipType": "Owner",
+      "primaryCrops": [
+        "Tomato",
+        "Onion"
+      ],
+      "expectedYieldKg": 28000,
+      "bankAccountMasked": "•••• •••• 6520",
+      "ifscCode": "MAHB0000412",
+      "bankName": "Bank of Maharashtra, Pimpalgaon",
+      "status": "verified",
+      "assignedOfficerId": "usr-officer-4",
+      "assignedOfficerName": "Dr. Vijay Deshmukh",
+      "isActivated": true,
+      "fieldNotes": "Large commercial farm with drip irrigation and modern sorting shed. Produces high firmness Shivam hybrid tomatoes.",
+      "documentProofs": [
+        "7_12_extract_gat_89.pdf"
+      ],
+      "fieldPhotos": [
+        "tomato_farm_patil.jpg"
+      ],
+      "createdAt": "2026-08-25T09:00:00Z"
+    },
+    {
+      "id": "fmr-4",
+      "fullName": "Suresh Kumar G.",
+      "phone": "+91 97890 12345",
+      "address": "Survey No. 78/3, Alangudi Road, Pudukkottai",
+      "state": "Tamil Nadu",
+      "district": "Pudukkottai",
+      "taluka": "Alangudi",
+      "village": "Vamban",
+      "gpsCoordinates": {
+        "lat": 10.3621,
+        "lng": 78.8912
+      },
+      "landSizeAcres": 0.8,
+      "ownershipType": "Owner",
+      "primaryCrops": [
+        "Tomato"
+      ],
+      "expectedYieldKg": 1200,
+      "bankAccountMasked": "•••• •••• 1928",
+      "ifscCode": "CBIN0281920",
+      "bankName": "Central Bank of India, Alangudi",
+      "status": "onboarding_requested",
+      "assignedOfficerId": "usr-officer-1",
+      "assignedOfficerName": "Dr. Anbarasan V.",
+      "isActivated": false,
+      "activationToken": "ACT-9821-X4K2",
+      "activationExpiresAt": "2026-09-20T23:59:59Z",
+      "documentProofs": [
+        "land_passbook.pdf"
+      ],
+      "fieldPhotos": [],
+      "createdAt": "2026-09-12T11:00:00Z"
+    }
+  ],
+  "fpos": [
+    {
+      "id": "fpo-1",
+      "name": "Thanjavur Delta Farmers Producer Company Ltd.",
+      "registrationNumber": "CIN-U01111TN2022PTC152891",
+      "representativeId": "usr-fpo-rep-1",
+      "representativeName": "S. Ramanujam (Director)",
+      "representativePhone": "+91 94432 10982",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "memberCount": 420,
+      "createdAt": "2026-01-10T00:00:00Z"
+    }
+  ],
+  "fpoContributions": [
+    {
+      "id": "fpo-c-1",
+      "fpoId": "fpo-1",
+      "farmerId": "fmr-1",
+      "farmerName": "Murugan Karuppasamy",
+      "crop": "Paddy / Rice",
+      "variety": "Ponni (Raw)",
+      "expectedKg": 2000,
+      "harvestWindow": "2026-09-15 to 2026-09-22",
+      "allocatedKg": 0,
+      "remainingKg": 2000,
+      "status": "available"
+    },
+    {
+      "id": "fpo-c-2",
+      "fpoId": "fpo-1",
+      "farmerId": "fmr-2",
+      "farmerName": "Lakshmi Bai Subramanian",
+      "crop": "Paddy / Rice",
+      "variety": "Ponni (Raw)",
+      "expectedKg": 3000,
+      "harvestWindow": "2026-09-15 to 2026-09-22",
+      "allocatedKg": 0,
+      "remainingKg": 3000,
+      "status": "available"
+    }
+  ],
+  "buyers": [
+    {
+      "id": "byr-1",
+      "organizationName": "AgroPure Foods & Processing Ltd.",
+      "category": "Company / Processor",
+      "authorizedPurchaser": "Karthik Narayanan (Procurement Lead)",
+      "mobile": "+91 98401 22391",
+      "email": "karthik.n@agropurefoods.com",
+      "address": "Plot 42, Ambattur Industrial Estate, Chennai - 600058",
+      "deliveryState": "Tamil Nadu",
+      "deliveryDistrict": "Chennai",
+      "businessRegistrationNumber": "CIN-U15400TN2018PLC098210",
+      "documents": [
+        {
+          "title": "Certificate of Incorporation",
+          "filename": "coi_agropure.pdf",
+          "verified": true
+        },
+        {
+          "title": "Authorized Signatory Resolution",
+          "filename": "board_res_karthik.pdf",
+          "verified": true
+        }
+      ],
+      "status": "verified",
+      "verifiedBy": "Platform Admin (Govt Oversight)",
+      "createdAt": "2026-08-15T11:20:00Z"
+    },
+    {
+      "id": "byr-2",
+      "organizationName": "National Institute of Technology Hostels & Mess",
+      "category": "College / Institution",
+      "authorizedPurchaser": "Prof. S. R. Venkatraman (Mess Warden)",
+      "mobile": "+91 94422 18942",
+      "email": "messwarden@nitt.edu",
+      "address": "NIT Campus, Tanjore Main Road, Tiruchirappalli - 620015",
+      "deliveryState": "Tamil Nadu",
+      "deliveryDistrict": "Tiruchirappalli",
+      "businessRegistrationNumber": "INST-MHRD-CFTI-042",
+      "documents": [
+        {
+          "title": "Institution Recognition Letter",
+          "filename": "nit_recognition.pdf",
+          "verified": true
+        },
+        {
+          "title": "Purchaser Authorization Letter",
+          "filename": "director_auth_letter.pdf",
+          "verified": true
+        }
+      ],
+      "status": "verified",
+      "verifiedBy": "Platform Admin (Govt Oversight)",
+      "createdAt": "2026-08-18T09:40:00Z"
+    },
+    {
+      "id": "byr-3",
+      "organizationName": "FreshBasket Supermarket Chain",
+      "category": "Retail Store",
+      "authorizedPurchaser": "Mahesh Sharma (Managing Partner)",
+      "mobile": "+91 98210 98124",
+      "email": "procure@freshbasket.in",
+      "address": "Shop 12-16, Metro Plaza, Vashi, Navi Mumbai - 400703",
+      "deliveryState": "Maharashtra",
+      "deliveryDistrict": "Thane",
+      "businessRegistrationNumber": "GSTIN27AABCF1234F1Z5",
+      "documents": [
+        {
+          "title": "Shop & Establishment License",
+          "filename": "gumasta_license.pdf",
+          "verified": true
+        },
+        {
+          "title": "GST Registration Certificate",
+          "filename": "gst_certificate.pdf",
+          "verified": true
+        }
+      ],
+      "status": "verified",
+      "verifiedBy": "Platform Admin (Govt Oversight)",
+      "createdAt": "2026-08-20T16:00:00Z"
+    },
+    {
+      "id": "byr-4",
+      "organizationName": "Kaveri Wholesale Traders",
+      "category": "Retail Store",
+      "authorizedPurchaser": "Rajesh Kannan",
+      "mobile": "+91 98430 77123",
+      "email": "kaveri.traders@gmail.com",
+      "address": "Gandhi Market, Trichy - 620008",
+      "deliveryState": "Tamil Nadu",
+      "deliveryDistrict": "Tiruchirappalli",
+      "businessRegistrationNumber": "GSTIN33AACCK9912D1Z8",
+      "documents": [
+        {
+          "title": "Trade License",
+          "filename": "trichy_trade_lic.pdf",
+          "verified": false
+        }
+      ],
+      "status": "under_review",
+      "createdAt": "2026-09-12T15:30:00Z"
+    }
+  ],
+  "listings": [
+    {
+      "id": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "sellerType": "individual",
+      "sellerId": "fmr-3",
+      "sellerName": "Rameshwar Bhaurao Patil",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "productForm": "Fresh Produce (Firm Semi-Ripe)",
+      "totalQuantityKg": 50,
+      "allocatedQuantityKg": 10,
+      "availableQuantityKg": 40,
+      "minimumPricePerKg": 18,
+      "expectedHarvestDate": "2026-09-15",
+      "pickupWindowStart": "2026-09-16T08:00:00Z",
+      "pickupWindowEnd": "2026-09-17T18:00:00Z",
+      "state": "Maharashtra",
+      "district": "Nashik",
+      "approximatePickupArea": "Gat No. 89 Packhouse, Pimpalgaon Baswant",
+      "qualityTerms": "Hand-picked, grade-A firmness, minimum 55mm diameter, zero crate damage.",
+      "images": [
+        "/crops/tomatoes.jpg"
+      ],
+      "status": "partially_allocated",
+      "biddingDeadline": "2026-09-16T18:00:00Z",
+      "officerInspectionNotes": "Verified on-site by Dr. Vijay Deshmukh. Meets all moisture and grade specifications.",
+      "createdAt": "2026-09-13T09:00:00Z"
+    },
+    {
+      "id": "lst-fpo-paddy-5000kg",
+      "listingCode": "LOT-2026-FPO-PAD-001",
+      "sellerType": "fpo",
+      "sellerId": "fpo-1",
+      "sellerName": "Thanjavur Delta Farmers Producer Company Ltd.",
+      "crop": "Paddy / Rice",
+      "variety": "Ponni (Raw)",
+      "productForm": "Paddy (Moisture <13%)",
+      "totalQuantityKg": 5000,
+      "allocatedQuantityKg": 0,
+      "availableQuantityKg": 5000,
+      "minimumPricePerKg": 24,
+      "expectedHarvestDate": "2026-09-18",
+      "pickupWindowStart": "2026-09-19T07:00:00Z",
+      "pickupWindowEnd": "2026-09-21T19:00:00Z",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "approximatePickupArea": "FPO Collective Depot, Budalur Road, Thiruvaiyaru",
+      "qualityTerms": "Standard fair average quality (FAQ). Moisture tested below 13%, zero foreign seeds.",
+      "images": [
+        "/crops/paddy.jpg"
+      ],
+      "status": "open_for_bids",
+      "biddingDeadline": "2026-09-17T20:00:00Z",
+      "officerInspectionNotes": "Combined lot from 2 verified small farmers (Murugan K & Lakshmi Bai). Verified by Dr. Anbarasan V.",
+      "fpoContributionIds": [
+        "fpo-c-1",
+        "fpo-c-2"
+      ],
+      "createdAt": "2026-09-13T10:30:00Z"
+    },
+    {
+      "id": "lst-banana-2500kg",
+      "listingCode": "LOT-2026-BAN-003",
+      "sellerType": "individual",
+      "sellerId": "fmr-1",
+      "sellerName": "Murugan Karuppasamy",
+      "crop": "Banana (Sold by Kg Weight)",
+      "variety": "Grand Naine (G9)",
+      "productForm": "Green Bunches (Weighed in kg)",
+      "totalQuantityKg": 2500,
+      "allocatedQuantityKg": 0,
+      "availableQuantityKg": 2500,
+      "minimumPricePerKg": 17.5,
+      "expectedHarvestDate": "2026-09-20",
+      "pickupWindowStart": "2026-09-21T06:00:00Z",
+      "pickupWindowEnd": "2026-09-22T14:00:00Z",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "approximatePickupArea": "South Street Farm Depot, Thiruvaiyaru",
+      "qualityTerms": "Sold strictly by weight in kg (not counts). 39-44 caliper grade, minimum 7.5 inch fingers.",
+      "images": [
+        "/crops/banana.jpg"
+      ],
+      "status": "open_for_bids",
+      "biddingDeadline": "2026-09-18T18:00:00Z",
+      "officerInspectionNotes": "Weighing will occur on calibrated digital platform scale at farm gate.",
+      "createdAt": "2026-09-13T11:00:00Z"
+    }
+  ],
+  "bids": [
+    {
+      "id": "bid-1789328780665",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerCategory": "Company / Processor",
+      "requestedQuantityKg": 10,
+      "offeredPricePerKg": 21,
+      "totalBidAmount": 210,
+      "proposedPickupDate": "2026-09-16",
+      "bidValidityDeadline": "2026-09-14T19:46:20.665Z",
+      "status": "submitted",
+      "createdAt": "2026-09-13T19:46:20.665Z"
+    },
+    {
+      "id": "bid-1789328773938",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerCategory": "Company / Processor",
+      "requestedQuantityKg": 10,
+      "offeredPricePerKg": 21,
+      "totalBidAmount": 210,
+      "proposedPickupDate": "2026-09-16",
+      "bidValidityDeadline": "2026-09-14T19:46:13.938Z",
+      "status": "submitted",
+      "createdAt": "2026-09-13T19:46:13.938Z"
+    },
+    {
+      "id": "bid-1789328772886",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerCategory": "Company / Processor",
+      "requestedQuantityKg": 10,
+      "offeredPricePerKg": 21,
+      "totalBidAmount": 210,
+      "proposedPickupDate": "2026-09-16",
+      "bidValidityDeadline": "2026-09-14T19:46:12.886Z",
+      "status": "submitted",
+      "createdAt": "2026-09-13T19:46:12.886Z"
+    },
+    {
+      "id": "bid-1789328771130",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerCategory": "Company / Processor",
+      "requestedQuantityKg": 10,
+      "offeredPricePerKg": 21,
+      "totalBidAmount": 210,
+      "proposedPickupDate": "2026-09-16",
+      "bidValidityDeadline": "2026-09-14T19:46:11.130Z",
+      "status": "submitted",
+      "createdAt": "2026-09-13T19:46:11.130Z"
+    },
+    {
+      "id": "bid-1789328325006",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-2",
+      "buyerOrgName": "National Institute of Technology Hostels & Mess",
+      "buyerCategory": "College / Institution",
+      "requestedQuantityKg": 20,
+      "offeredPricePerKg": 22,
+      "totalBidAmount": 440,
+      "proposedPickupDate": "2026-09-18",
+      "bidValidityDeadline": "2026-09-14T19:38:45.006Z",
+      "status": "submitted",
+      "createdAt": "2026-09-13T19:38:45.006Z"
+    },
+    {
+      "id": "bid-1789328324980",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerCategory": "Company / Processor",
+      "requestedQuantityKg": 10,
+      "offeredPricePerKg": 20,
+      "totalBidAmount": 200,
+      "proposedPickupDate": "2026-09-18",
+      "bidValidityDeadline": "2026-09-14T19:38:44.980Z",
+      "status": "accepted_by_buyer",
+      "createdAt": "2026-09-13T19:38:44.980Z"
+    },
+    {
+      "id": "bid-1",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerCategory": "Company / Processor",
+      "requestedQuantityKg": 10,
+      "offeredPricePerKg": 20,
+      "totalBidAmount": 200,
+      "proposedPickupDate": "2026-09-16",
+      "bidValidityDeadline": "2026-09-16T18:00:00Z",
+      "status": "submitted",
+      "createdAt": "2026-09-13T12:00:00Z"
+    },
+    {
+      "id": "bid-2",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-2",
+      "buyerOrgName": "National Institute of Technology Hostels & Mess",
+      "buyerCategory": "College / Institution",
+      "requestedQuantityKg": 20,
+      "offeredPricePerKg": 22,
+      "totalBidAmount": 440,
+      "proposedPickupDate": "2026-09-16",
+      "bidValidityDeadline": "2026-09-16T18:00:00Z",
+      "status": "submitted",
+      "createdAt": "2026-09-13T12:15:00Z"
+    },
+    {
+      "id": "bid-3",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-3",
+      "buyerOrgName": "FreshBasket Supermarket Chain",
+      "buyerCategory": "Retail Store",
+      "requestedQuantityKg": 15,
+      "offeredPricePerKg": 19.5,
+      "totalBidAmount": 292.5,
+      "proposedPickupDate": "2026-09-17",
+      "bidValidityDeadline": "2026-09-16T18:00:00Z",
+      "status": "submitted",
+      "createdAt": "2026-09-13T12:45:00Z"
+    }
+  ],
+  "allocations": [
+    {
+      "id": "alc-1789328325024-hec1",
+      "listingId": "lst-canonical-50kg",
+      "bidId": "bid-1789328324980",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "allocatedKg": 10,
+      "agreedPricePerKg": 20,
+      "totalOrderValue": 200,
+      "farmerSelectedAt": "2026-09-13T19:38:45.024Z",
+      "status": "converted_to_order",
+      "officerConfirmedAt": "2026-09-13T19:38:45.042Z",
+      "officerPhoneNotes": "Verified 10 kg @ Rs. 20/kg with AgroPure procurement lead.",
+      "buyerConfirmedAt": "2026-09-13T19:38:45.058Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-1789328325058",
+      "orderNumber": "ORD-2026-TOM-9304",
+      "listingId": "lst-canonical-50kg",
+      "allocationId": "alc-1789328325024-hec1",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerPhone": "+91 98401 22391",
+      "sellerId": "fmr-3",
+      "sellerName": "Rameshwar Bhaurao Patil",
+      "sellerType": "individual",
+      "sellerPhone": "+91 98221 34812",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "confirmedQuantityKg": 10,
+      "agreedPricePerKg": 20,
+      "totalOrderAmount": 200,
+      "qualityTermsSnapshot": "Hand-picked, grade-A firmness, minimum 55mm diameter, zero crate damage.",
+      "pickupDeadline": "2026-09-17T18:00:00Z",
+      "custodyRule": "Buyer arranges transport. Custody transfers to buyer at farm gate upon triple OTP verification.",
+      "status": "paid",
+      "createdAt": "2026-09-13T19:38:45.058Z",
+      "updatedAt": "2026-09-13T19:38:45.135Z"
+    },
+    {
+      "id": "ord-sample-101",
+      "orderNumber": "ORD-2026-TN-0091",
+      "listingId": "lst-fpo-paddy-5000kg",
+      "allocationId": "alc-demo-91",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerPhone": "+91 98401 22391",
+      "sellerId": "fpo-1",
+      "sellerName": "Thanjavur Delta Farmers Producer Company Ltd.",
+      "sellerType": "fpo",
+      "sellerPhone": "+91 94432 10982",
+      "crop": "Paddy / Rice",
+      "variety": "Ponni (Raw)",
+      "confirmedQuantityKg": 2000,
+      "agreedPricePerKg": 25,
+      "totalOrderAmount": 50000,
+      "qualityTermsSnapshot": "Moisture <13%, FAQ Grade. Verified by Dr. Anbarasan V.",
+      "pickupDeadline": "2026-09-19T18:00:00Z",
+      "custodyRule": "Buyer arranges transport. Custody transfers to buyer at farm gate upon triple OTP verification.",
+      "status": "secured",
+      "createdAt": "2026-09-12T16:00:00Z",
+      "updatedAt": "2026-09-12T16:30:00Z"
+    }
+  ],
+  "escrows": [
+    {
+      "id": "esc-1789328325058",
+      "orderId": "ord-1789328325058",
+      "orderNumber": "ORD-2026-TOM-9304",
+      "buyerId": "byr-1",
+      "sellerId": "fmr-3",
+      "heldAmount": 200,
+      "simulationBadge": "DEMO/SIMULATED",
+      "status": "released",
+      "paymentReference": "ESC-SIM-28325058",
+      "fundedAt": "2026-09-13T19:38:45.103Z",
+      "releasedAmount": 200,
+      "refundedAmount": 0,
+      "settledAt": "2026-09-13T19:38:45.135Z"
+    },
+    {
+      "id": "esc-sample-101",
+      "orderId": "ord-sample-101",
+      "orderNumber": "ORD-2026-TN-0091",
+      "buyerId": "byr-1",
+      "sellerId": "fpo-1",
+      "heldAmount": 50000,
+      "simulationBadge": "DEMO/SIMULATED",
+      "status": "held",
+      "paymentReference": "ESC-SIM-829104-SBIN",
+      "fundedAt": "2026-09-12T16:30:00Z"
+    }
+  ],
+  "transports": [
+    {
+      "id": "trn-1789328325123",
+      "orderId": "ord-1789328325058",
+      "transportPartner": "Kisan Fast Freight",
+      "vehicleNumber": "MH-15-EG-4412",
+      "vehicleCapacityKg": 1000,
+      "driverName": "Santosh Shinde",
+      "driverPhone": "+91 98220 99112",
+      "estimatedArrival": "2026-09-13T19:38:45.111Z",
+      "status": "assigned",
+      "assignedAt": "2026-09-13T19:38:45.123Z"
+    }
+  ],
+  "pickups": [
+    {
+      "id": "pck-1789328325123",
+      "orderId": "ord-1789328325058",
+      "orderNumber": "ORD-2026-TOM-9304",
+      "pickupOtp": "404416",
+      "qrChallengeCode": "CS-OTP-ORD-2026-TOM-9304-0KADA6",
+      "scaleWeightKg": 10,
+      "inspectionNotes": "Scale weighment passed. Firm semi-ripe quality confirmed.",
+      "photoEvidenceUrls": [],
+      "farmerConfirmed": true,
+      "collectorConfirmed": true,
+      "officerConfirmed": true,
+      "verifyingOfficerId": "usr-officer-4",
+      "verifyingOfficerName": "Dr. Vijay Deshmukh",
+      "isDispatched": true,
+      "shortageQuantityKg": 0,
+      "verifiedAt": "2026-09-13T19:38:45.135Z"
+    }
+  ],
+  "grievances": [
+    {
+      "id": "grv-1789328325154",
+      "complaintNumber": "GRV-2026-2767",
+      "complainantId": "fmr-1",
+      "complainantName": "Rameshwar Patil",
+      "complainantRole": "farmer",
+      "complainantPhone": "+91 98221 34812",
+      "category": "Vehicle / Logistics No-Show",
+      "description": "Vehicle arrived 1 hour later than scheduled pickup window.",
+      "linkedOrderId": "ord-1789328325058",
+      "evidenceFiles": [],
+      "assignedOfficerId": "usr-officer-1",
+      "assignedOfficerName": "Dr. Anbarasan V.",
+      "hierarchyLevel": "Taluka",
+      "status": "opened",
+      "responses": [
+        {
+          "authorName": "System Bot / Desk",
+          "authorRole": "System",
+          "message": "Grievance registered under ticket GRV-2026-2767. Assigned to Dr. Anbarasan V. (Village Agriculture Officer) for verification.",
+          "timestamp": "2026-09-13T19:38:45.154Z"
+        }
+      ],
+      "createdAt": "2026-09-13T19:38:45.154Z"
+    },
+    {
+      "id": "grv-1",
+      "complaintNumber": "GRV-2026-0041",
+      "complainantId": "fmr-1",
+      "complainantName": "Murugan Karuppasamy",
+      "complainantRole": "farmer",
+      "complainantPhone": "+91 98421 77301",
+      "category": "Vehicle / Logistics No-Show",
+      "description": "Buyer truck scheduled for 10 AM has not arrived and no coordinator update received. Perishable crop waiting in loading shed.",
+      "linkedOrderId": "ord-sample-101",
+      "evidenceFiles": [
+        "weighbridge_shed_photo.jpg"
+      ],
+      "assignedOfficerId": "usr-officer-1",
+      "assignedOfficerName": "Dr. Anbarasan V.",
+      "hierarchyLevel": "Taluka",
+      "status": "under_review",
+      "responses": [
+        {
+          "authorName": "Dr. Anbarasan V. (VAO)",
+          "authorRole": "Agricultural Officer",
+          "message": "Spoke with AgroPure dispatch manager. Truck TN-04-AB-9821 was delayed due to road diversion; will arrive by 2:30 PM.",
+          "timestamp": "2026-09-13T11:30:00Z"
+        }
+      ],
+      "createdAt": "2026-09-13T10:45:00Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud-1789328780669-ocbe",
+      "timestamp": "2026-09-13T19:46:20.669Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "SUBMIT_BID",
+      "targetEntity": "bids",
+      "targetId": "bid-1789328780665",
+      "reason": "Submitted bid of 10 kg @ Rs. 21/kg (Total: Rs. 210) for LOT-2026-TOM-050"
+    },
+    {
+      "id": "aud-1789328773941-75lz",
+      "timestamp": "2026-09-13T19:46:13.941Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "SUBMIT_BID",
+      "targetEntity": "bids",
+      "targetId": "bid-1789328773938",
+      "reason": "Submitted bid of 10 kg @ Rs. 21/kg (Total: Rs. 210) for LOT-2026-TOM-050"
+    },
+    {
+      "id": "aud-1789328772889-u1qm",
+      "timestamp": "2026-09-13T19:46:12.889Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "SUBMIT_BID",
+      "targetEntity": "bids",
+      "targetId": "bid-1789328772886",
+      "reason": "Submitted bid of 10 kg @ Rs. 21/kg (Total: Rs. 210) for LOT-2026-TOM-050"
+    },
+    {
+      "id": "aud-1789328771133-6jtl",
+      "timestamp": "2026-09-13T19:46:11.133Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "SUBMIT_BID",
+      "targetEntity": "bids",
+      "targetId": "bid-1789328771130",
+      "reason": "Submitted bid of 10 kg @ Rs. 21/kg (Total: Rs. 210) for LOT-2026-TOM-050"
+    },
+    {
+      "id": "aud-1789328325157-7jik",
+      "timestamp": "2026-09-13T19:38:45.157Z",
+      "actorId": "fmr-1",
+      "actorName": "Rameshwar Patil",
+      "actorRole": "farmer",
+      "action": "FILE_GRIEVANCE",
+      "targetEntity": "grievances",
+      "targetId": "grv-1789328325154",
+      "reason": "Grievance ticket GRV-2026-2767 filed under category 'Vehicle / Logistics No-Show'."
+    },
+    {
+      "id": "aud-1789328325138-ez2e",
+      "timestamp": "2026-09-13T19:38:45.138Z",
+      "actorId": "usr-officer-4",
+      "actorName": "Dr. Vijay Deshmukh",
+      "actorRole": "officer",
+      "action": "VERIFY_PICKUP_AND_RELEASE_ESCROW",
+      "targetEntity": "orders",
+      "targetId": "ord-1789328325058",
+      "reason": "Pickup verified on scale: 10 kg (Agreed: 10 kg, Shortage: 0 kg). Escrow settlement triggered to seller account."
+    },
+    {
+      "id": "aud-1789328325126-gmre",
+      "timestamp": "2026-09-13T19:38:45.126Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "ASSIGN_TRANSPORT",
+      "targetEntity": "orders",
+      "targetId": "ord-1789328325058",
+      "reason": "Assigned vehicle MH-15-EG-4412 (Driver: Santosh Shinde, Phone: +91 98220 99112). Generated single-use pickup OTP."
+    },
+    {
+      "id": "aud-1789328325106-fyx0",
+      "timestamp": "2026-09-13T19:38:45.106Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "SIMULATED_ESCROW_PREPAYMENT",
+      "targetEntity": "escrows",
+      "targetId": "esc-1789328325058",
+      "reason": "Buyer prepaid full order amount of Rs. 200 into banking partner escrow. Payment secured."
+    },
+    {
+      "id": "aud-1789328325064-s636",
+      "timestamp": "2026-09-13T19:38:45.064Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "CONFIRM_ALLOCATION_ORDER_CREATED",
+      "targetEntity": "orders",
+      "targetId": "ord-1789328325058",
+      "reason": "Confirmed allocation for 10 kg of Tomato. Order ORD-2026-TOM-9304 created. Listing balance updated to 40 kg remaining."
+    },
+    {
+      "id": "aud-1789328325045-hosv",
+      "timestamp": "2026-09-13T19:38:45.045Z",
+      "actorId": "usr-officer-4",
+      "actorName": "Dr. Vijay Deshmukh (TAO)",
+      "actorRole": "officer",
+      "action": "OFFICER_PHONE_CONFIRMATION",
+      "targetEntity": "allocations",
+      "targetId": "alc-1789328325024-hec1",
+      "reason": "Verified 10 kg @ Rs. 20/kg with AgroPure procurement lead."
+    },
+    {
+      "id": "aud-1789328325028-clh5",
+      "timestamp": "2026-09-13T19:38:45.028Z",
+      "actorId": "fmr-3",
+      "actorName": "Rameshwar Bhaurao Patil",
+      "actorRole": "farmer",
+      "action": "FARMER_PROPOSE_ALLOCATION",
+      "targetEntity": "allocations",
+      "targetId": "alc-1789328325024-hec1",
+      "reason": "Farmer proposed allocating 10 kg @ Rs. 20/kg to AgroPure Foods & Processing Ltd."
+    },
+    {
+      "id": "aud-1789328325010-qkxg",
+      "timestamp": "2026-09-13T19:38:45.011Z",
+      "actorId": "byr-2",
+      "actorName": "National Institute of Technology Hostels & Mess",
+      "actorRole": "buyer",
+      "action": "SUBMIT_BID",
+      "targetEntity": "bids",
+      "targetId": "bid-1789328325006",
+      "reason": "Submitted bid of 20 kg @ Rs. 22/kg (Total: Rs. 440) for LOT-2026-TOM-050"
+    },
+    {
+      "id": "aud-1789328324983-hpio",
+      "timestamp": "2026-09-13T19:38:44.983Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "SUBMIT_BID",
+      "targetEntity": "bids",
+      "targetId": "bid-1789328324980",
+      "reason": "Submitted bid of 10 kg @ Rs. 20/kg (Total: Rs. 200) for LOT-2026-TOM-050"
+    },
+    {
+      "id": "aud-001",
+      "timestamp": "2026-09-12T16:00:00Z",
+      "actorId": "usr-officer-1",
+      "actorName": "Dr. Anbarasan V.",
+      "actorRole": "officer",
+      "action": "CONFIRM_BUYER_ALLOCATION",
+      "targetEntity": "orders",
+      "targetId": "ord-sample-101",
+      "reason": "Telephonically confirmed quantity (2,000 kg), unit price (Rs. 25/kg) and pickup terms with AgroPure Foods manager."
+    },
+    {
+      "id": "aud-002",
+      "timestamp": "2026-09-12T16:30:00Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "PREPAY_ESCROW_FUNDS",
+      "targetEntity": "escrows",
+      "targetId": "esc-sample-101",
+      "reason": "Simulated escrow pre-funding of Rs. 50,000 received and held in banking partner escrow ledger."
+    }
+  ],
+  "demands": []
+}
