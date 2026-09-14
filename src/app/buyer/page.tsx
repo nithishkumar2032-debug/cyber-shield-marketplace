@@ -3,7 +3,7 @@
 // Registered B2B Buyer Portal
 // Prepared by Cyber Shield | SIH 26033
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { useMarketplace } from '@/context/MarketplaceContext';
 import {
@@ -19,7 +19,13 @@ import {
   ShieldCheck,
   Scale,
   Receipt,
+  Sparkles,
+  Calculator,
+  Navigation,
 } from 'lucide-react';
+import { LogisticsEstimatorModal } from '@/components/LogisticsEstimatorModal';
+import { calculateLogisticsCost, estimateDistanceKm, LOGISTICS_PARTNERS, VEHICLE_CONFIGS } from '@/lib/logistics';
+import { LogisticsPartner, VehicleTypeConfig, LogisticsCalculationResult } from '@/types';
 
 export default function BuyerPage() {
   const {
@@ -50,6 +56,51 @@ export default function BuyerPage() {
   const [driverName, setDriverName] = useState<string>('Selvam Murugesan');
   const [driverPhone, setDriverPhone] = useState<string>('+91 97891 02931');
   const [estimatedArrival, setEstimatedArrival] = useState<string>('2026-09-19T10:00');
+
+  // Dynamic Logistics & Freight Estimator State
+  const [isEstimatorOpen, setIsEstimatorOpen] = useState<boolean>(false);
+  const [destinationCity, setDestinationCity] = useState<string>('Chennai');
+  const [distanceKm, setDistanceKm] = useState<number>(340);
+  const [vehicleType, setVehicleType] = useState<string>('Mahindra Bolero Maxi Truck');
+  const [estimatedFreightInr, setEstimatedFreightInr] = useState<number>(10960);
+  const [freightPerKgInr, setFreightPerKgInr] = useState<number>(4.38);
+
+  // Derive active order details
+  const activeOrder = myOrders.find((o) => o.id === selectedOrderId) || myOrders[0];
+  const activeWeight = activeOrder?.confirmedQuantityKg || 2500;
+
+  // Dynamic real-time calculation for active order payload
+  const activeEstimates = useMemo(() => {
+    return calculateLogisticsCost(activeWeight, distanceKm);
+  }, [activeWeight, distanceKm]);
+  const recommendedFit = activeEstimates[0];
+
+  const handlePartnerSelected = (
+    partner: LogisticsPartner,
+    vehicle: VehicleTypeConfig,
+    estimate: LogisticsCalculationResult
+  ) => {
+    setTransportPartner(partner.name);
+    setVehicleCapacityKg(vehicle.maxPayloadKg);
+    setVehicleType(vehicle.name);
+    setVehicleNumber(
+      `TN-${Math.floor(10 + Math.random() * 89)}-${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}-${Math.floor(1000 + Math.random() * 9000)}`
+    );
+    setDriverName(`S. Murugan (${partner.name.split(' ')[0]} Fleet)`);
+    setDriverPhone(partner.phone);
+    setEstimatedFreightInr(estimate.totalFreightInr);
+    setFreightPerKgInr(estimate.freightPerKgInr);
+    setDistanceKm(estimate.distanceKm);
+
+    const tomorrow = new Date(Date.now() + 86400000);
+    tomorrow.setHours(10, 0, 0, 0);
+    setEstimatedArrival(tomorrow.toISOString().slice(0, 16));
+
+    setActionMsg({
+      type: 'success',
+      text: `Selected verified partner "${partner.name}" (${vehicle.name})! Freight estimated at ₹${estimate.totalFreightInr.toLocaleString('en-IN')} (₹${estimate.freightPerKgInr}/kg). Form details pre-filled.`,
+    });
+  };
 
   const handleAcceptTerms = async (allocationId: string) => {
     setActionMsg(null);
@@ -87,6 +138,10 @@ export default function BuyerPage() {
       driverName,
       driverPhone,
       estimatedArrival,
+      distanceKm,
+      vehicleType,
+      estimatedFreightCostInr: estimatedFreightInr,
+      freightCostPerKgInr: freightPerKgInr,
     });
     if (res.success) {
       setActionMsg({
@@ -439,6 +494,128 @@ export default function BuyerPage() {
               </select>
             </div>
 
+            {/* Smart Logistics Recommender & Real-Time Freight Calculator Card */}
+            <div className="bg-gradient-to-br from-purple-50 via-indigo-50/50 to-white rounded-2xl p-4 sm:p-5 border border-purple-200/80 shadow-sm space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-purple-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-purple-600 text-white flex items-center justify-center shadow-sm">
+                    <Truck className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm flex items-center gap-1.5">
+                      Smart Logistics Partner Recommender
+                      <span className="text-[9px] font-black uppercase tracking-wider bg-purple-200/80 text-purple-900 px-1.5 py-0.5 rounded">
+                        Dynamic AI Rates
+                      </span>
+                    </h4>
+                    <p className="text-[11px] text-slate-500">
+                      Payload: <b className="text-purple-950">{activeWeight.toLocaleString()} kg</b> • Farm Origin: <b>Thanjavur, TN</b>
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsEstimatorOpen(true)}
+                  className="px-3 py-1.5 rounded-xl bg-white hover:bg-purple-100/70 text-purple-900 font-bold text-xs border border-purple-300 shadow-sm flex items-center gap-1.5 transition-all self-start sm:self-auto"
+                >
+                  <Calculator className="w-3.5 h-3.5 text-purple-700" />
+                  <span>Full Freight Calculator</span>
+                  <ChevronRight className="w-3 h-3 text-purple-600" />
+                </button>
+              </div>
+
+              {/* Corridor & Quick Live Estimate */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+                    Delivery Destination:
+                  </label>
+                  <select
+                    value={destinationCity}
+                    onChange={(e) => {
+                      const city = e.target.value;
+                      setDestinationCity(city);
+                      setDistanceKm(estimateDistanceKm('Thanjavur', city));
+                    }}
+                    className="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-semibold focus:ring-2 focus:ring-purple-600"
+                  >
+                    <option value="Chennai">Chennai, TN (~340 km)</option>
+                    <option value="Bengaluru">Bengaluru, KA (~410 km)</option>
+                    <option value="Coimbatore">Coimbatore, TN (~270 km)</option>
+                    <option value="Madurai">Madurai, TN (~185 km)</option>
+                    <option value="Hyderabad">Hyderabad, TS (~910 km)</option>
+                    <option value="Mumbai">Mumbai, MH (~1380 km)</option>
+                  </select>
+                </div>
+
+                <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Recommended Vehicle
+                  </div>
+                  <div className="font-bold text-slate-900 text-xs truncate">
+                    {recommendedFit?.vehicle.name || 'Bolero Maxi Truck'}
+                  </div>
+                  <div className="text-[10px] text-slate-500">
+                    Cap: {recommendedFit?.vehicle.maxPayloadKg.toLocaleString()} kg • ~{recommendedFit?.estimatedTransitHours}h transit
+                  </div>
+                </div>
+
+                <div className="bg-white p-2.5 rounded-xl border border-purple-200/80 flex flex-col justify-between">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-purple-600">
+                    Est. Dynamic Freight
+                  </div>
+                  <div className="text-sm sm:text-base font-black text-purple-900">
+                    ₹{recommendedFit?.totalFreightInr.toLocaleString('en-IN')}{' '}
+                    <span className="text-[10px] font-bold text-purple-700 font-sans">
+                      (₹{recommendedFit?.freightPerKgInr}/kg)
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recommended Partners Chips (1-Click Auto-Fill) */}
+              <div className="space-y-1.5 pt-1">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center justify-between">
+                  <span>Suggested Verified Partners for {activeWeight} kg ({destinationCity}):</span>
+                  <span className="text-purple-700 font-semibold cursor-pointer hover:underline" onClick={() => setIsEstimatorOpen(true)}>
+                    Compare All 5 Partners →
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {LOGISTICS_PARTNERS.slice(0, 2).map((partner) => (
+                    <div
+                      key={partner.id}
+                      className="bg-white p-2.5 rounded-xl border border-slate-200 hover:border-purple-300 flex items-center justify-between gap-2 shadow-2xs transition-all"
+                    >
+                      <div className="truncate">
+                        <div className="font-bold text-slate-900 text-xs flex items-center gap-1 truncate">
+                          {partner.name}
+                          <ShieldCheck className="w-3 h-3 text-emerald-600 shrink-0" />
+                        </div>
+                        <div className="text-[10px] text-slate-500">
+                          ★ {partner.rating} • Insurance Included
+                        </div>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (recommendedFit) {
+                            handlePartnerSelected(partner, recommendedFit.vehicle, recommendedFit);
+                          }
+                        }}
+                        className="px-2.5 py-1 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-bold text-[10px] shrink-0 transition-colors shadow-2xs flex items-center gap-1"
+                      >
+                        <Sparkles className="w-3 h-3" />
+                        <span>Auto-Fill</span>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">Transport Partner:</label>
@@ -446,11 +623,24 @@ export default function BuyerPage() {
                   type="text"
                   value={transportPartner}
                   onChange={(e) => setTransportPartner(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900"
                   required
                 />
               </div>
 
+              <div>
+                <label className="block font-semibold text-slate-700 mb-1">Vehicle Category & Model:</label>
+                <input
+                  type="text"
+                  value={vehicleType}
+                  onChange={(e) => setVehicleType(e.target.value)}
+                  placeholder="e.g. Mahindra Bolero Maxi Truck"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-900"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">Vehicle Plate Number:</label>
                 <input
@@ -460,6 +650,25 @@ export default function BuyerPage() {
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-mono font-bold"
                   required
                 />
+              </div>
+
+              <div>
+                <label className="block font-semibold text-slate-700 mb-1">Estimated Freight Cost (INR):</label>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    value={estimatedFreightInr}
+                    onChange={(e) => {
+                      const cost = Number(e.target.value);
+                      setEstimatedFreightInr(cost);
+                      setFreightPerKgInr(Number((cost / activeWeight).toFixed(2)));
+                    }}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-purple-950"
+                  />
+                  <div className="bg-purple-50 text-purple-800 border border-purple-200 rounded-xl px-2.5 py-2 font-bold text-[11px] shrink-0">
+                    ₹{freightPerKgInr}/kg
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -574,6 +783,17 @@ export default function BuyerPage() {
           </div>
         </div>
       )}
+
+      {/* Interactive Full Logistics & Dynamic Freight Estimator Modal */}
+      <LogisticsEstimatorModal
+        isOpen={isEstimatorOpen}
+        onClose={() => setIsEstimatorOpen(false)}
+        initialWeightKg={activeWeight}
+        initialOrigin="Thanjavur"
+        initialCrop={activeOrder?.crop || 'Paddy (Co-51)'}
+        unitPricePerKg={activeOrder?.agreedPricePerKg || 22}
+        onSelectPartner={handlePartnerSelected}
+      />
     </div>
   );
 }

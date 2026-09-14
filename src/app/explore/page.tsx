@@ -17,7 +17,10 @@ import {
   Tag,
   ArrowRight,
   Info,
+  Truck,
+  Calculator,
 } from 'lucide-react';
+import { LogisticsEstimatorModal } from '@/components/LogisticsEstimatorModal';
 
 export default function ExplorePage() {
   const { state } = useMarketplace();
@@ -25,6 +28,8 @@ export default function ExplorePage() {
   const [selectedDistrict, setSelectedDistrict] = useState<string>('All');
   const [selectedCrop, setSelectedCrop] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [estimatorListing, setEstimatorListing] = useState<any | null>(null);
+  const [isEstimatorOpen, setIsEstimatorOpen] = useState<boolean>(false);
 
   const listings = state?.listings || [];
   const catalogue = state?.catalogue || [];
@@ -75,7 +80,7 @@ export default function ExplorePage() {
           </p>
         </div>
 
-        <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-xs text-emerald-100 space-y-2 w-full md:w-auto">
+        <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-xs text-emerald-100 space-y-3 w-full md:w-auto">
           <div className="font-bold text-white flex items-center gap-1.5">
             <Info className="w-4 h-4 text-amber-300" />
             <span>Market Discovery Protocol</span>
@@ -85,6 +90,18 @@ export default function ExplorePage() {
             <li>Reference MSP & APMC benchmark prices</li>
             <li>Partial procurement in kg supported</li>
           </ul>
+
+          <button
+            type="button"
+            onClick={() => {
+              setEstimatorListing(null);
+              setIsEstimatorOpen(true);
+            }}
+            className="w-full py-2 px-3 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-md"
+          >
+            <Truck className="w-3.5 h-3.5 text-emerald-200" />
+            <span>Dynamic Freight Calculator</span>
+          </button>
         </div>
       </div>
 
@@ -280,10 +297,19 @@ export default function ExplorePage() {
                 </div>
 
                 {/* Footer Action */}
-                <div className="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                  <div className="text-xs text-slate-500">
-                    Seller: <span className="font-semibold text-slate-700">{listing.sellerName}</span>
-                  </div>
+                <div className="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEstimatorListing(listing);
+                      setIsEstimatorOpen(true);
+                    }}
+                    className="text-[11px] font-bold px-2.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 transition-colors flex items-center gap-1"
+                  >
+                    <Truck className="w-3 h-3 text-purple-600" />
+                    <span>Freight Est.</span>
+                  </button>
+
                   <Link
                     href={`/bids?lot=${listing.id}`}
                     className="text-xs font-bold px-3.5 py-1.5 rounded-xl bg-emerald-700 text-white hover:bg-emerald-800 transition-colors shadow-sm flex items-center gap-1"
@@ -297,6 +323,16 @@ export default function ExplorePage() {
           })
         )}
       </div>
+
+      {/* Dynamic Freight & Logistics Estimator Modal */}
+      <LogisticsEstimatorModal
+        isOpen={isEstimatorOpen}
+        onClose={() => setIsEstimatorOpen(false)}
+        initialWeightKg={estimatorListing ? Math.min(estimatorListing.availableQuantityKg, 5000) : 2500}
+        initialOrigin={estimatorListing?.district || 'Thanjavur'}
+        initialCrop={estimatorListing?.crop || 'Paddy (Co-51)'}
+        unitPricePerKg={estimatorListing?.minimumPricePerKg || 22}
+      />
     </div>
   );
 }

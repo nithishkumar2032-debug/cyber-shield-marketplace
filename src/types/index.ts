@@ -280,6 +280,48 @@ export interface EscrowRecord {
   disputeHoldReason?: string;
 }
 
+export interface VehicleTypeConfig {
+  id: string;
+  name: string;
+  category: 'Mini Truck' | 'Pickup' | 'Light Commercial' | 'Medium Truck' | 'Heavy Multi-Axle' | 'Cold-Chain Reefer';
+  maxPayloadKg: number;
+  baseFareInr: number;
+  ratePerKmInr: number;
+  minDistanceKm: number;
+  tollSurchargePerKmInr: number;
+  loadingUnloadingChargeInr: number;
+  suitableCrops: string[];
+  description: string;
+}
+
+export interface LogisticsPartner {
+  id: string;
+  name: string;
+  operatingStates: string[];
+  rating: number;
+  reviewCount: number;
+  verifiedBadge: boolean;
+  vehicleFleet: string[]; // vehicle category IDs
+  phone: string;
+  headquarters: string;
+  transitSpeedKmPerDay: number;
+  transitInsuranceAvailable: boolean;
+}
+
+export interface LogisticsCalculationResult {
+  vehicle: VehicleTypeConfig;
+  distanceKm: number;
+  payloadKg: number;
+  totalFreightInr: number;
+  freightPerKgInr: number;
+  baseFare: number;
+  distanceFare: number;
+  tollSurcharge: number;
+  loadingUnloadingFare: number;
+  estimatedTransitHours: number;
+  suggestedPartners: LogisticsPartner[];
+}
+
 export interface TransportAssignment {
   id: string;
   orderId: string;
@@ -291,6 +333,10 @@ export interface TransportAssignment {
   estimatedArrival: string;
   status: 'assigned' | 'arrived' | 'departed';
   assignedAt: string;
+  distanceKm?: number;
+  vehicleType?: string;
+  estimatedFreightCostInr?: number;
+  freightCostPerKgInr?: number;
 }
 
 export interface PickupVerification {

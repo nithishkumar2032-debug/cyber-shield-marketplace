@@ -72,7 +72,18 @@ export async function POST(req: NextRequest) {
 
     // 2. Assign Transport Details & Generate Pickup OTP
     if (action === 'assign_transport') {
-      const { transportPartner, vehicleNumber, vehicleCapacityKg, driverName, driverPhone, estimatedArrival } = body;
+      const {
+        transportPartner,
+        vehicleNumber,
+        vehicleCapacityKg,
+        driverName,
+        driverPhone,
+        estimatedArrival,
+        distanceKm,
+        vehicleType,
+        estimatedFreightCostInr,
+        freightCostPerKgInr,
+      } = body;
 
       if (!vehicleNumber || !driverName || !driverPhone) {
         return NextResponse.json(
@@ -96,6 +107,10 @@ export async function POST(req: NextRequest) {
         estimatedArrival: estimatedArrival || new Date(Date.now() + 86400000).toISOString(),
         status: 'assigned',
         assignedAt: new Date().toISOString(),
+        distanceKm: distanceKm ? Number(distanceKm) : undefined,
+        vehicleType: vehicleType || undefined,
+        estimatedFreightCostInr: estimatedFreightCostInr ? Number(estimatedFreightCostInr) : undefined,
+        freightCostPerKgInr: freightCostPerKgInr ? Number(freightCostPerKgInr) : undefined,
       };
 
       // Store initial pickup verification challenge

@@ -528,7 +528,7 @@ export default function FarmerPortalPage() {
                         <div className="flex items-center gap-2 text-emerald-900">
                           <Truck className="w-4 h-4 text-emerald-700" />
                           <span>
-                            Arriving Vehicle: <b>{transport.vehicleNumber}</b> (Capacity: {transport.vehicleCapacityKg} kg) • Driver: <b>{transport.driverName}</b> ({transport.driverPhone})
+                            Arriving Vehicle: <b>{transport.vehicleNumber}</b> {transport.vehicleType ? `(${transport.vehicleType})` : `(Capacity: ${transport.vehicleCapacityKg} kg)`} • Partner: <b>{transport.transportPartner}</b> • Driver: <b>{transport.driverName}</b> ({transport.driverPhone})
                           </span>
                         </div>
                         <span className="text-emerald-800 font-semibold text-[11px]">

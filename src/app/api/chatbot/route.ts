@@ -55,6 +55,13 @@ const KNOWLEDGE_FAQS = [
     link: '/explore',
     actionText: 'Browse Marketplace by kg',
   },
+  {
+    keywords: ['logistics', 'transport', 'freight', 'truck', 'vehicle', 'distance', 'reefer', 'cost per kg'],
+    answer:
+      'The platform features a dynamic logistics engine that calculates freight costs based on payload weight (kg), transit distance (km), and vehicle category (Tata Ace Mini Truck, Bolero Pickup, Eicher 14ft ICV, 6-Wheeler, Heavy Taurus, and Cold-Chain Reefers). Verified logistics partners can be compared and assigned directly with single-use pickup OTPs.',
+    link: '/buyer',
+    actionText: 'Open Transport & Logistics Estimator',
+  },
 ];
 
 export async function POST(req: NextRequest) {
