@@ -1,14 +1,13 @@
 'use client';
 
-// India-Wide Crop Marketplace & Discovery
-// Prepared by Cyber Shield | SIH 26033
+// Sovereign B2B Marketplace Discovery
+// Implemented per Google Stitch Design System (AgroShield Exchange | SIH 26033)
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useMarketplace } from '@/context/MarketplaceContext';
 import {
   Search,
-  Filter,
   MapPin,
   Scale,
   Calendar,
@@ -19,6 +18,12 @@ import {
   Info,
   Truck,
   Calculator,
+  Layers,
+  Sparkles,
+  ChevronDown,
+  CheckCircle2,
+  Lock,
+  Download,
 } from 'lucide-react';
 import { LogisticsEstimatorModal } from '@/components/LogisticsEstimatorModal';
 
@@ -30,6 +35,16 @@ export default function ExplorePage() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [estimatorListing, setEstimatorListing] = useState<any | null>(null);
   const [isEstimatorOpen, setIsEstimatorOpen] = useState<boolean>(false);
+
+  // Listen for global open-freight-estimator event from Header
+  useEffect(() => {
+    const handleOpen = () => {
+      setEstimatorListing(null);
+      setIsEstimatorOpen(true);
+    };
+    window.addEventListener('open-freight-estimator', handleOpen);
+    return () => window.removeEventListener('open-freight-estimator', handleOpen);
+  }, []);
 
   const listings = state?.listings || [];
   const catalogue = state?.catalogue || [];
@@ -64,123 +79,208 @@ export default function ExplorePage() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      {/* Header Banner */}
-      <div className="bg-gradient-to-r from-emerald-900 to-teal-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-emerald-700/50">
-        <div className="space-y-2 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-800 text-emerald-200 text-xs font-semibold">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Pan-India B2B Discovery • All Quantities in kg</span>
+    <div className="w-full flex flex-col gap-6 sm:gap-8 pb-16">
+      {/* 1. Top Sovereign Institutional Banner from Google Stitch */}
+      <section className="w-full bg-[#f2f3ff] px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative overflow-hidden border-b border-[#e2e7ff]">
+        <div className="absolute -right-20 -top-24 w-96 h-96 rounded-full bg-[#7bd8b1]/20 blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-[1440px] mx-auto flex flex-col gap-6 relative z-10">
+          {/* Operational Metric Ticker Row */}
+          <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 rounded font-bold text-[10px] bg-[#005d42] text-white uppercase tracking-wider">
+                Protocol Layer 01
+              </span>
+              <span className="text-slate-600 font-medium">
+                National APMC Clearing Grid • Real-Time Landed Quotation Engine
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3 text-slate-500 font-bold text-[11px]">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#047857]"></span>
+                SETTLEMENT LATENCY: 140ms
+              </span>
+              <span className="text-slate-300">/</span>
+              <span>CURRENCY: INR (₹)</span>
+              <span className="text-slate-300">/</span>
+              <span className="text-[#005d42] font-black uppercase">SOVEREIGN ESCROW LOCKED</span>
+            </div>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-            India-Wide Crop Marketplace
-          </h1>
-          <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-            Browse verified produce directly from individual bulk farmers and FPO aggregation depots. Standardized unit pricing in INR/kg. Fruits such as bananas and coconuts are strictly weighed by kg.
-          </p>
+
+          {/* Main Headline Block */}
+          <div className="rounded-2xl bg-gradient-to-r from-[#005d42] via-[#047857] to-[#002115] p-6 sm:p-10 text-white shadow-xl flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
+            <div className="flex flex-col max-w-3xl gap-3">
+              <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full w-fit border border-white/20">
+                <ShieldCheck className="w-4 h-4 text-[#97f5cc]" />
+                <span className="text-[11px] font-bold text-[#97f5cc] uppercase tracking-wider">
+                  Autonomous Dispute-Proof Mandi Gateway
+                </span>
+              </div>
+
+              <h1 className="font-heading text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+                Pan-India B2B Crop Exchange & Procurement Network
+              </h1>
+
+              <p className="text-xs sm:text-sm text-[#9ffdd3]/90 max-w-2xl leading-relaxed">
+                Direct institutional sourcing from GPS-verified FPOs and agricultural collectives. Multi-signature escrow settlement, field officer quality assays, strictly unified in metric kilograms (kg).
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEstimatorListing(null);
+                    setIsEstimatorOpen(true);
+                  }}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white text-[#005d42] font-bold text-xs shadow hover:bg-[#f2f3ff] transition-all"
+                >
+                  <Truck className="w-4 h-4 text-[#005d42]" />
+                  <span>Launch Freight Recommender</span>
+                </button>
+
+                <Link
+                  href="/bids"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/15 text-white font-semibold text-xs hover:bg-white/25 transition-all border border-white/20"
+                >
+                  <Layers className="w-4 h-4 text-white" />
+                  <span>Inspect Live Bidding Order Book</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Metric Cards Pillar from Stitch */}
+            <div className="grid grid-cols-3 gap-2 w-full lg:w-auto bg-white/10 p-4 rounded-xl backdrop-blur-md border border-white/20">
+              <div className="flex flex-col pr-4 border-r border-white/15">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#97f5cc]/80">Verified Lots</span>
+                <span className="text-xl sm:text-2xl font-extrabold text-white tabular-nums">
+                  48,520 <span className="text-[10px] font-bold">kg</span>
+                </span>
+                <span className="text-[10px] text-[#9ffdd3] mt-0.5">Active pan-India</span>
+              </div>
+
+              <div className="flex flex-col px-4 border-r border-white/15">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#97f5cc]/80">Escrow Vault</span>
+                <span className="text-xl sm:text-2xl font-extrabold text-white tabular-nums">
+                  ₹142.8 <span className="text-[10px] font-bold">Lakh</span>
+                </span>
+                <span className="text-[10px] text-[#9ffdd3] mt-0.5">Under custody</span>
+              </div>
+
+              <div className="flex flex-col pl-4">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#97f5cc]/80">Registered</span>
+                <span className="text-xl sm:text-2xl font-extrabold text-white tabular-nums">1,240</span>
+                <span className="text-[10px] text-[#9ffdd3] mt-0.5">Certified FPOs</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-xs text-emerald-100 space-y-3 w-full md:w-auto">
-          <div className="font-bold text-white flex items-center gap-1.5">
-            <Info className="w-4 h-4 text-amber-300" />
-            <span>Market Discovery Protocol</span>
+      {/* 2. Cascading Multi-Filter & Verification Rail from Stitch */}
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 -mt-10 sm:-mt-12 z-20">
+        <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-4 sm:p-5 flex flex-col gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            {/* Search Input */}
+            <div className="md:col-span-5 relative flex items-center">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search crop, variety, or lot ID (e.g., LOT-2026-FPO-PAD-001)..."
+                className="w-full h-11 pl-10 pr-4 bg-[#f2f3ff] rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#005d42] transition-all border border-slate-200"
+              />
+            </div>
+
+            {/* Cascading Selectors */}
+            <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {/* State Filter */}
+              <div>
+                <select
+                  value={selectedState}
+                  onChange={(e) => {
+                    setSelectedState(e.target.value);
+                    setSelectedDistrict('All');
+                  }}
+                  className="w-full h-11 px-3 bg-[#f2f3ff] rounded-xl text-xs font-semibold text-slate-800 border border-slate-200 focus:ring-2 focus:ring-[#005d42]"
+                >
+                  <option value="All">All India States</option>
+                  {statesList.filter((s) => s !== 'All').map((st) => (
+                    <option key={st} value={st}>
+                      {st}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* District Filter */}
+              <div>
+                <select
+                  value={selectedDistrict}
+                  onChange={(e) => setSelectedDistrict(e.target.value)}
+                  className="w-full h-11 px-3 bg-[#f2f3ff] rounded-xl text-xs font-semibold text-slate-800 border border-slate-200 focus:ring-2 focus:ring-[#005d42]"
+                >
+                  <option value="All">All Districts</option>
+                  {districtsList.filter((d) => d !== 'All').map((dst) => (
+                    <option key={dst} value={dst}>
+                      {dst}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Crop Filter */}
+              <div>
+                <select
+                  value={selectedCrop}
+                  onChange={(e) => setSelectedCrop(e.target.value)}
+                  className="w-full h-11 px-3 bg-[#f2f3ff] rounded-xl text-xs font-semibold text-slate-800 border border-slate-200 focus:ring-2 focus:ring-[#005d42]"
+                >
+                  <option value="All">All Crop Categories</option>
+                  {cropsList.filter((c) => c !== 'All').map((crp) => (
+                    <option key={crp} value={crp}>
+                      {crp}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
           </div>
-          <ul className="space-y-1 text-[11px] text-emerald-200/90 list-disc list-inside">
-            <li>State & District cascading filters</li>
-            <li>Reference MSP & APMC benchmark prices</li>
-            <li>Partial procurement in kg supported</li>
-          </ul>
 
-          <button
-            type="button"
-            onClick={() => {
-              setEstimatorListing(null);
-              setIsEstimatorOpen(true);
-            }}
-            className="w-full py-2 px-3 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-md"
-          >
-            <Truck className="w-3.5 h-3.5 text-emerald-200" />
-            <span>Dynamic Freight Calculator</span>
-          </button>
+          {/* Quick Active Filters & Status Row */}
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-xs text-slate-500">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-slate-700">Displaying:</span>
+              <span className="font-bold text-[#005d42]">{filteredListings.length} Verified Crop Lots</span>
+              <span>• Standardized in metric kilograms (kg)</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="badge-escrow">
+                <Lock className="w-3 h-3" />
+                ESCROW PROTECTED
+              </span>
+              <span className="badge-ai">
+                <Truck className="w-3 h-3" />
+                FREIGHT CALCULATOR ATTACHED
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Filter Bar */}
-      <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
-        <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
-          {/* Keyword Search */}
-          <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by crop, variety, district, lot code..."
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition-all"
-            />
-          </div>
-
-          {/* State Filter */}
-          <div className="flex items-center gap-2">
-            <label className="text-xs font-semibold text-slate-600 shrink-0">State:</label>
-            <select
-              value={selectedState}
-              onChange={(e) => {
-                setSelectedState(e.target.value);
-                setSelectedDistrict('All');
-              }}
-              className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-600"
-            >
-              {statesList.map((st) => (
-                <option key={st} value={st}>
-                  {st}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* District Filter */}
-          <div className="flex items-center gap-2">
-            <label className="text-xs font-semibold text-slate-600 shrink-0">District:</label>
-            <select
-              value={selectedDistrict}
-              onChange={(e) => setSelectedDistrict(e.target.value)}
-              className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-600"
-            >
-              {districtsList.map((dst) => (
-                <option key={dst} value={dst}>
-                  {dst}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Crop Category */}
-          <div className="flex items-center gap-2">
-            <label className="text-xs font-semibold text-slate-600 shrink-0">Crop:</label>
-            <select
-              value={selectedCrop}
-              onChange={(e) => setSelectedCrop(e.target.value)}
-              className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-600"
-            >
-              {cropsList.map((crp) => (
-                <option key={crp} value={crp}>
-                  {crp}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Active Filter Chips */}
-        <div className="flex flex-wrap items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
-          <div>
-            Showing <span className="font-bold text-slate-800">{filteredListings.length}</span> verified lots
-            {selectedState !== 'All' && <span> in <b>{selectedState}</b></span>}
-            {selectedDistrict !== 'All' && <span>, <b>{selectedDistrict}</b></span>}
-          </div>
-
-          {(selectedState !== 'All' || selectedDistrict !== 'All' || selectedCrop !== 'All' || searchQuery) && (
+      {/* 3. Crop Batch Cards Grid (Stitch High-Data Density Architecture) */}
+      <section className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+        {filteredListings.length === 0 ? (
+          <div className="bg-white rounded-2xl p-12 text-center border border-slate-200 space-y-4">
+            <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
+              <Search className="w-8 h-8" />
+            </div>
+            <h3 className="font-heading text-lg font-bold text-slate-800">No Produce Lots Found</h3>
+            <p className="text-xs text-slate-500 max-w-md mx-auto">
+              No crop listings matched your filter criteria. Try resetting the state or search term.
+            </p>
             <button
               onClick={() => {
                 setSelectedState('All');
@@ -188,141 +288,148 @@ export default function ExplorePage() {
                 setSelectedCrop('All');
                 setSearchQuery('');
               }}
-              className="text-emerald-700 hover:text-emerald-800 font-semibold"
+              className="px-4 py-2 rounded-xl bg-[#005d42] text-white font-bold text-xs hover:bg-[#047857] transition-all"
             >
-              Clear all filters
+              Reset Filters
             </button>
-          )}
-        </div>
-      </div>
-
-      {/* Listings Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredListings.length === 0 ? (
-          <div className="col-span-full p-12 text-center bg-white rounded-2xl border border-slate-200 space-y-3">
-            <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center">
-              <Search className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-bold text-slate-800">No crop listings match your criteria</h3>
-            <p className="text-xs text-slate-500">
-              Try adjusting your state, district, or crop filters to see produce in other regions.
-            </p>
           </div>
         ) : (
-          filteredListings.map((listing) => {
-            // Find reference price from catalogue
-            const catItem = catalogue.find(
-              (c) => c.cropName.toLowerCase() === listing.crop.toLowerCase()
-            );
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {filteredListings.map((listing) => {
+              const catItem = catalogue.find((c) => c.cropName.toLowerCase() === listing.crop.toLowerCase());
+              const percentRemaining = Math.round((listing.availableQuantityKg / listing.totalQuantityKg) * 100);
 
-            return (
-              <div
-                key={listing.id}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover-lift flex flex-col justify-between"
-              >
-                <div className="p-5 space-y-4">
-                  {/* Status & Code */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-800 border border-slate-200">
-                      {listing.listingCode}
-                    </span>
-                    <span
-                      className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${
-                        listing.sellerType === 'fpo'
-                          ? 'bg-amber-50 text-amber-800 border-amber-200'
-                          : 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                      }`}
-                    >
-                      {listing.sellerType === 'fpo' ? 'FPO Collective Lot' : 'Individual Bulk Farmer'}
-                    </span>
-                  </div>
-
-                  {/* Title & Variety */}
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900">{listing.crop}</h3>
-                    <div className="text-xs text-slate-600 font-medium">
-                      {listing.variety} • {listing.productForm}
-                    </div>
-                  </div>
-
-                  {/* Quantity & Price Card */}
-                  <div className="bg-slate-50 rounded-xl p-3.5 border border-slate-100 grid grid-cols-2 gap-3 text-xs">
-                    <div>
-                      <div className="text-slate-400 text-[11px]">Available Balance</div>
-                      <div className="text-base font-extrabold text-slate-900">
-                        {listing.availableQuantityKg.toLocaleString()} kg
-                      </div>
-                      <div className="text-[10px] text-slate-500">
-                        Total Lot: {listing.totalQuantityKg.toLocaleString()} kg
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-slate-400 text-[11px]">Reserve Floor</div>
-                      <div className="text-base font-extrabold text-emerald-700">
-                        ₹{listing.minimumPricePerKg.toFixed(2)}
-                        <span className="text-xs font-normal text-slate-500"> / kg</span>
-                      </div>
-                      <div className="text-[10px] text-slate-500">INR per kilogram</div>
-                    </div>
-                  </div>
-
-                  {/* Reference Price Badge */}
-                  {catItem && (
-                    <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl px-3 py-2 text-[11px] text-emerald-900 flex items-center justify-between">
+              return (
+                <div
+                  key={listing.id}
+                  className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-[#047857]/40 transition-all flex flex-col justify-between overflow-hidden"
+                >
+                  <div className="p-5 space-y-4">
+                    {/* Top Rail: Mandi Code & Verified Badge */}
+                    <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3">
                       <div>
-                        <span className="font-semibold text-emerald-800">Govt/NAFED Benchmark: </span>
-                        <span className="font-bold">₹{catItem.referencePricePerKg.toFixed(2)}/kg</span>
+                        <span className="font-mono text-[11px] font-bold text-slate-500 tracking-wider">
+                          {listing.listingCode}
+                        </span>
+                        <div className="text-[10px] text-slate-400">MANDI: {listing.district.toUpperCase()}-01</div>
                       </div>
-                      <span className="badge-demo text-[9px] py-0 px-1.5">DEMO BENCHMARK</span>
-                    </div>
-                  )}
 
-                  {/* Location & Quality */}
-                  <div className="space-y-1.5 text-xs text-slate-600 pt-1">
-                    <div className="flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                      <span>{listing.approximatePickupArea}, {listing.district}, {listing.state}</span>
+                      {listing.sellerType === 'fpo' ? (
+                        <span className="badge-escrow">
+                          <Building2 className="w-3 h-3" />
+                          FPO COLLECTIVE LOT
+                        </span>
+                      ) : (
+                        <span className="badge-officer">
+                          <CheckCircle2 className="w-3 h-3" />
+                          OFFICER VERIFIED
+                        </span>
+                      )}
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                      <span>Expected Harvest: {listing.expectedHarvestDate}</span>
+
+                    {/* Commodity Title & Variety */}
+                    <div>
+                      <h3 className="font-heading text-lg font-bold text-slate-900">{listing.crop}</h3>
+                      <div className="text-xs text-[#005d42] font-semibold flex items-center gap-1.5 mt-0.5">
+                        <span>Variety: {listing.variety}</span>
+                        <span>•</span>
+                        <span>{listing.productForm}</span>
+                      </div>
+                    </div>
+
+                    {/* Metric Grid from Stitch: Price & Available kg */}
+                    <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-[#f2f3ff] border border-[#e2e7ff]">
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                          Reserve Floor
+                        </span>
+                        <div className="text-lg font-extrabold text-[#005d42] tabular-nums mt-0.5">
+                          ₹{listing.minimumPricePerKg.toFixed(2)}
+                          <span className="text-xs font-normal text-slate-600"> / kg</span>
+                        </div>
+                        <span className="text-[9px] text-slate-500">INR per kilogram</span>
+                      </div>
+
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                          Available Lot
+                        </span>
+                        <div className="text-lg font-extrabold text-slate-900 tabular-nums mt-0.5">
+                          {listing.availableQuantityKg.toLocaleString('en-IN')}{' '}
+                          <span className="text-xs font-normal text-slate-600">kg</span>
+                        </div>
+                        {/* Progress Stock bar */}
+                        <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden mt-1.5">
+                          <div
+                            className="bg-[#005d42] h-full rounded-full transition-all"
+                            style={{ width: `${percentRemaining}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Benchmark MSP reference badge */}
+                    {catItem && (
+                      <div className="bg-[#ecfdf5] border border-[#a7f3d0] rounded-xl px-3 py-1.5 text-[11px] text-[#065f46] flex items-center justify-between">
+                        <div>
+                          <span className="font-bold">Govt / NAFED MSP: </span>
+                          <span className="font-extrabold tabular-nums">₹{catItem.referencePricePerKg.toFixed(2)}/kg</span>
+                        </div>
+                        <span className="text-[9px] font-bold uppercase bg-white/80 px-1.5 py-0.5 rounded border border-[#a7f3d0]">
+                          MSP ANCHOR
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Location & Farm-Gate Specs */}
+                    <div className="space-y-1.5 text-xs text-slate-600 pt-1">
+                      <div className="flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span className="font-medium text-slate-800">
+                          {listing.approximatePickupArea}, {listing.district}, {listing.state}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
+                        <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                        <span>Ready for Pickup: {listing.expectedHarvestDate}</span>
+                      </div>
+                    </div>
+
+                    {/* Quality Spec Snapshot */}
+                    <div className="p-2.5 rounded-xl bg-slate-50 text-[11px] text-slate-600 border border-slate-200/80">
+                      <span className="font-bold text-slate-700">Quality Spec: </span>
+                      {listing.qualityTerms}
                     </div>
                   </div>
 
-                  {/* Quality Terms Snapshot */}
-                  <div className="p-2.5 rounded-lg bg-slate-50 text-[11px] text-slate-600 border border-slate-100">
-                    <span className="font-semibold text-slate-700">Quality Spec: </span>
-                    {listing.qualityTerms}
+                  {/* Card Footer Actions */}
+                  <div className="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEstimatorListing(listing);
+                        setIsEstimatorOpen(true);
+                      }}
+                      className="text-[11px] font-bold px-3 py-1.5 rounded-xl bg-[#f2f3ff] hover:bg-[#e2e7ff] text-[#4e45d5] border border-[#c7d2fe] transition-all flex items-center gap-1.5 shadow-2xs"
+                    >
+                      <Truck className="w-3.5 h-3.5 text-[#4e45d5]" />
+                      <span>Estimate Freight</span>
+                    </button>
+
+                    <Link
+                      href={`/bids?lot=${listing.id}`}
+                      className="text-xs font-bold px-4 py-1.5 rounded-xl bg-[#005d42] text-white hover:bg-[#047857] transition-all shadow-sm flex items-center gap-1.5"
+                    >
+                      <span>Inspect & Bid</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </div>
-
-                {/* Footer Action */}
-                <div className="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEstimatorListing(listing);
-                      setIsEstimatorOpen(true);
-                    }}
-                    className="text-[11px] font-bold px-2.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 transition-colors flex items-center gap-1"
-                  >
-                    <Truck className="w-3 h-3 text-purple-600" />
-                    <span>Freight Est.</span>
-                  </button>
-
-                  <Link
-                    href={`/bids?lot=${listing.id}`}
-                    className="text-xs font-bold px-3.5 py-1.5 rounded-xl bg-emerald-700 text-white hover:bg-emerald-800 transition-colors shadow-sm flex items-center gap-1"
-                  >
-                    <span>Inspect & Bid</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            );
-          })
+              );
+            })}
+          </div>
         )}
-      </div>
+      </section>
 
       {/* Dynamic Freight & Logistics Estimator Modal */}
       <LogisticsEstimatorModal

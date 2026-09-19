@@ -1,9 +1,22 @@
 import type { Metadata } from 'next';
+import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import { MarketplaceProvider } from '@/context/MarketplaceContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatbotModal from '@/components/ChatbotModal';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Pan-India B2B Crop Marketplace | Cyber Shield (SIH 26033)',
@@ -26,11 +39,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-slate-50 text-slate-900 flex flex-col min-h-screen antialiased">
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+      <body className="bg-[#faf8ff] text-[#131b2e] flex flex-col min-h-screen antialiased selection:bg-emerald-100 selection:text-emerald-900">
         <MarketplaceProvider>
           <Header />
-          <main className="flex-1 w-full">{children}</main>
+          <main className="flex-1 w-full pt-32 sm:pt-36">{children}</main>
           <Footer />
           <ChatbotModal />
         </MarketplaceProvider>

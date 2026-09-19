@@ -553,8 +553,8 @@
       "variety": "Shivam Hybrid",
       "productForm": "Fresh Produce (Firm Semi-Ripe)",
       "totalQuantityKg": 50,
-      "allocatedQuantityKg": 20,
-      "availableQuantityKg": 30,
+      "allocatedQuantityKg": 30,
+      "availableQuantityKg": 20,
       "minimumPricePerKg": 18,
       "expectedHarvestDate": "2026-09-15",
       "pickupWindowStart": "2026-09-16T08:00:00Z",
@@ -633,6 +633,40 @@
     }
   ],
   "bids": [
+    {
+      "id": "bid-1789393541682",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-2",
+      "buyerOrgName": "National Institute of Technology Hostels & Mess",
+      "buyerCategory": "College / Institution",
+      "requestedQuantityKg": 20,
+      "offeredPricePerKg": 22,
+      "totalBidAmount": 440,
+      "proposedPickupDate": "2026-09-18",
+      "bidValidityDeadline": "2026-09-15T13:45:41.682Z",
+      "status": "submitted",
+      "createdAt": "2026-09-14T13:45:41.682Z"
+    },
+    {
+      "id": "bid-1789393541666",
+      "listingId": "lst-canonical-50kg",
+      "listingCode": "LOT-2026-TOM-050",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerCategory": "Company / Processor",
+      "requestedQuantityKg": 10,
+      "offeredPricePerKg": 20,
+      "totalBidAmount": 200,
+      "proposedPickupDate": "2026-09-18",
+      "bidValidityDeadline": "2026-09-15T13:45:41.666Z",
+      "status": "accepted_by_buyer",
+      "createdAt": "2026-09-14T13:45:41.666Z"
+    },
     {
       "id": "bid-1789390290314",
       "listingId": "lst-canonical-50kg",
@@ -851,9 +885,48 @@
       "officerConfirmedAt": "2026-09-14T12:51:30.345Z",
       "officerPhoneNotes": "Verified 10 kg @ Rs. 20/kg with AgroPure procurement lead.",
       "buyerConfirmedAt": "2026-09-14T12:51:30.359Z"
+    },
+    {
+      "id": "alc-1789393541691-hbr4",
+      "listingId": "lst-canonical-50kg",
+      "bidId": "bid-1789393541666",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "allocatedKg": 10,
+      "agreedPricePerKg": 20,
+      "totalOrderValue": 200,
+      "farmerSelectedAt": "2026-09-14T13:45:41.691Z",
+      "status": "converted_to_order",
+      "officerConfirmedAt": "2026-09-14T13:45:41.703Z",
+      "officerPhoneNotes": "Verified 10 kg @ Rs. 20/kg with AgroPure procurement lead.",
+      "buyerConfirmedAt": "2026-09-14T13:45:41.718Z"
     }
   ],
   "orders": [
+    {
+      "id": "ord-1789393541718",
+      "orderNumber": "ORD-2026-TOM-2276",
+      "listingId": "lst-canonical-50kg",
+      "allocationId": "alc-1789393541691-hbr4",
+      "buyerId": "byr-1",
+      "buyerOrgName": "AgroPure Foods & Processing Ltd.",
+      "buyerPhone": "+91 98401 22391",
+      "sellerId": "fmr-3",
+      "sellerName": "Rameshwar Bhaurao Patil",
+      "sellerType": "individual",
+      "sellerPhone": "+91 98221 34812",
+      "crop": "Tomato",
+      "variety": "Shivam Hybrid",
+      "confirmedQuantityKg": 10,
+      "agreedPricePerKg": 20,
+      "totalOrderAmount": 200,
+      "qualityTermsSnapshot": "Hand-picked, grade-A firmness, minimum 55mm diameter, zero crate damage.",
+      "pickupDeadline": "2026-09-17T18:00:00Z",
+      "custodyRule": "Buyer arranges transport. Custody transfers to buyer at farm gate upon triple OTP verification.",
+      "status": "paid",
+      "createdAt": "2026-09-14T13:45:41.718Z",
+      "updatedAt": "2026-09-14T13:45:41.765Z"
+    },
     {
       "id": "ord-1789390290359",
       "orderNumber": "ORD-2026-TOM-7617",
@@ -929,6 +1002,21 @@
   ],
   "escrows": [
     {
+      "id": "esc-1789393541718",
+      "orderId": "ord-1789393541718",
+      "orderNumber": "ORD-2026-TOM-2276",
+      "buyerId": "byr-1",
+      "sellerId": "fmr-3",
+      "heldAmount": 200,
+      "simulationBadge": "DEMO/SIMULATED",
+      "status": "released",
+      "paymentReference": "ESC-SIM-93541718",
+      "fundedAt": "2026-09-14T13:45:41.739Z",
+      "releasedAmount": 200,
+      "refundedAmount": 0,
+      "settledAt": "2026-09-14T13:45:41.765Z"
+    },
+    {
       "id": "esc-1789390290359",
       "orderId": "ord-1789390290359",
       "orderNumber": "ORD-2026-TOM-7617",
@@ -995,6 +1083,18 @@
       "estimatedArrival": "2026-09-14T12:51:30.405Z",
       "status": "assigned",
       "assignedAt": "2026-09-14T12:51:30.422Z"
+    },
+    {
+      "id": "trn-1789393541749",
+      "orderId": "ord-1789393541718",
+      "transportPartner": "Kisan Fast Freight",
+      "vehicleNumber": "MH-15-EG-4412",
+      "vehicleCapacityKg": 1000,
+      "driverName": "Santosh Shinde",
+      "driverPhone": "+91 98220 99112",
+      "estimatedArrival": "2026-09-14T13:45:41.749Z",
+      "status": "assigned",
+      "assignedAt": "2026-09-14T13:45:41.749Z"
     }
   ],
   "pickups": [
@@ -1033,9 +1133,52 @@
       "isDispatched": true,
       "shortageQuantityKg": 0,
       "verifiedAt": "2026-09-14T12:51:30.445Z"
+    },
+    {
+      "id": "pck-1789393541749",
+      "orderId": "ord-1789393541718",
+      "orderNumber": "ORD-2026-TOM-2276",
+      "pickupOtp": "367569",
+      "qrChallengeCode": "CS-OTP-ORD-2026-TOM-2276-44J1FQ",
+      "scaleWeightKg": 10,
+      "inspectionNotes": "Scale weighment passed. Firm semi-ripe quality confirmed.",
+      "photoEvidenceUrls": [],
+      "farmerConfirmed": true,
+      "collectorConfirmed": true,
+      "officerConfirmed": true,
+      "verifyingOfficerId": "usr-officer-4",
+      "verifyingOfficerName": "Dr. Vijay Deshmukh",
+      "isDispatched": true,
+      "shortageQuantityKg": 0,
+      "verifiedAt": "2026-09-14T13:45:41.765Z"
     }
   ],
   "grievances": [
+    {
+      "id": "grv-1789393541782",
+      "complaintNumber": "GRV-2026-7485",
+      "complainantId": "fmr-1",
+      "complainantName": "Rameshwar Patil",
+      "complainantRole": "farmer",
+      "complainantPhone": "+91 98221 34812",
+      "category": "Vehicle / Logistics No-Show",
+      "description": "Vehicle arrived 1 hour later than scheduled pickup window.",
+      "linkedOrderId": "ord-1789393541718",
+      "evidenceFiles": [],
+      "assignedOfficerId": "usr-officer-1",
+      "assignedOfficerName": "Dr. Anbarasan V.",
+      "hierarchyLevel": "Taluka",
+      "status": "opened",
+      "responses": [
+        {
+          "authorName": "System Bot / Desk",
+          "authorRole": "System",
+          "message": "Grievance registered under ticket GRV-2026-7485. Assigned to Dr. Anbarasan V. (Village Agriculture Officer) for verification.",
+          "timestamp": "2026-09-14T13:45:41.782Z"
+        }
+      ],
+      "createdAt": "2026-09-14T13:45:41.782Z"
+    },
     {
       "id": "grv-1789390290462",
       "complaintNumber": "GRV-2026-7054",
@@ -1115,6 +1258,105 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "aud-1789393541784-zu2m",
+      "timestamp": "2026-09-14T13:45:41.784Z",
+      "actorId": "fmr-1",
+      "actorName": "Rameshwar Patil",
+      "actorRole": "farmer",
+      "action": "FILE_GRIEVANCE",
+      "targetEntity": "grievances",
+      "targetId": "grv-1789393541782",
+      "reason": "Grievance ticket GRV-2026-7485 filed under category 'Vehicle / Logistics No-Show'."
+    },
+    {
+      "id": "aud-1789393541767-f0ba",
+      "timestamp": "2026-09-14T13:45:41.767Z",
+      "actorId": "usr-officer-4",
+      "actorName": "Dr. Vijay Deshmukh",
+      "actorRole": "officer",
+      "action": "VERIFY_PICKUP_AND_RELEASE_ESCROW",
+      "targetEntity": "orders",
+      "targetId": "ord-1789393541718",
+      "reason": "Pickup verified on scale: 10 kg (Agreed: 10 kg, Shortage: 0 kg). Escrow settlement triggered to seller account."
+    },
+    {
+      "id": "aud-1789393541751-8ry1",
+      "timestamp": "2026-09-14T13:45:41.751Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "ASSIGN_TRANSPORT",
+      "targetEntity": "orders",
+      "targetId": "ord-1789393541718",
+      "reason": "Assigned vehicle MH-15-EG-4412 (Driver: Santosh Shinde, Phone: +91 98220 99112). Generated single-use pickup OTP."
+    },
+    {
+      "id": "aud-1789393541741-y5wy",
+      "timestamp": "2026-09-14T13:45:41.741Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "SIMULATED_ESCROW_PREPAYMENT",
+      "targetEntity": "escrows",
+      "targetId": "esc-1789393541718",
+      "reason": "Buyer prepaid full order amount of Rs. 200 into banking partner escrow. Payment secured."
+    },
+    {
+      "id": "aud-1789393541720-5tyy",
+      "timestamp": "2026-09-14T13:45:41.720Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "CONFIRM_ALLOCATION_ORDER_CREATED",
+      "targetEntity": "orders",
+      "targetId": "ord-1789393541718",
+      "reason": "Confirmed allocation for 10 kg of Tomato. Order ORD-2026-TOM-2276 created. Listing balance updated to 20 kg remaining."
+    },
+    {
+      "id": "aud-1789393541705-ffvv",
+      "timestamp": "2026-09-14T13:45:41.705Z",
+      "actorId": "usr-officer-4",
+      "actorName": "Dr. Vijay Deshmukh (TAO)",
+      "actorRole": "officer",
+      "action": "OFFICER_PHONE_CONFIRMATION",
+      "targetEntity": "allocations",
+      "targetId": "alc-1789393541691-hbr4",
+      "reason": "Verified 10 kg @ Rs. 20/kg with AgroPure procurement lead."
+    },
+    {
+      "id": "aud-1789393541693-6qlj",
+      "timestamp": "2026-09-14T13:45:41.693Z",
+      "actorId": "fmr-3",
+      "actorName": "Rameshwar Bhaurao Patil",
+      "actorRole": "farmer",
+      "action": "FARMER_PROPOSE_ALLOCATION",
+      "targetEntity": "allocations",
+      "targetId": "alc-1789393541691-hbr4",
+      "reason": "Farmer proposed allocating 10 kg @ Rs. 20/kg to AgroPure Foods & Processing Ltd."
+    },
+    {
+      "id": "aud-1789393541684-sldi",
+      "timestamp": "2026-09-14T13:45:41.684Z",
+      "actorId": "byr-2",
+      "actorName": "National Institute of Technology Hostels & Mess",
+      "actorRole": "buyer",
+      "action": "SUBMIT_BID",
+      "targetEntity": "bids",
+      "targetId": "bid-1789393541682",
+      "reason": "Submitted bid of 20 kg @ Rs. 22/kg (Total: Rs. 440) for LOT-2026-TOM-050"
+    },
+    {
+      "id": "aud-1789393541670-a2ak",
+      "timestamp": "2026-09-14T13:45:41.670Z",
+      "actorId": "byr-1",
+      "actorName": "AgroPure Foods & Processing Ltd.",
+      "actorRole": "buyer",
+      "action": "SUBMIT_BID",
+      "targetEntity": "bids",
+      "targetId": "bid-1789393541666",
+      "reason": "Submitted bid of 10 kg @ Rs. 20/kg (Total: Rs. 200) for LOT-2026-TOM-050"
+    },
     {
       "id": "aud-1789390290464-znvb",
       "timestamp": "2026-09-14T12:51:30.464Z",

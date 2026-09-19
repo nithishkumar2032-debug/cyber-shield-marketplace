@@ -1,62 +1,112 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --primary: #065f46;
+  --background: #faf8ff;
+  --foreground: #131b2e;
+  --primary: #005d42;
   --primary-hover: #047857;
-  --accent: #d97706;
-  --accent-light: #fef3c7;
-  --card-bg: #ffffff;
+  --primary-container: #047857;
+  --on-primary-container: #9ffdd3;
+  --secondary: #4e45d5;
+  --secondary-container: #6860ef;
+  --tertiary: #7129ae;
+  --surface-low: #f2f3ff;
+  --surface-lowest: #ffffff;
   --card-border: #e2e8f0;
 }
 
 @theme inline {
+  --font-display: var(--font-outfit), 'Outfit', sans-serif;
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
   --color-primary-50: #ecfdf5;
   --color-primary-100: #d1fae5;
   --color-primary-600: #059669;
   --color-primary-700: #047857;
-  --color-primary-800: #065f46;
-  --color-primary-900: #064e3b;
-  --color-earth-50: #fffbeb;
-  --color-earth-100: #fef3c7;
-  --color-earth-600: #d97706;
-  --color-earth-700: #b45309;
+  --color-primary-800: #005d42;
+  --color-primary-900: #002115;
+  --color-secondary-50: #f5f3ff;
+  --color-secondary-100: #ede9fe;
+  --color-secondary-600: #4e45d5;
+  --color-secondary-700: #4338ca;
+  --color-surface-dim: #d2d9f4;
+  --color-surface-low: #f2f3ff;
+  --color-surface-high: #e2e7ff;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
 
-/* Glassmorphic elements */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+h1, h2, h3, .font-heading {
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
 }
 
-.glass-header {
-  background: rgba(6, 78, 59, 0.96);
-  backdrop-filter: blur(12px);
+.tabular-nums {
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
-/* Badge styles */
+/* Institutional Badges from Google Stitch Design System */
+.badge-escrow {
+  background-color: #e0e7ff;
+  color: #3730a3;
+  border: 1px solid #c7d2fe;
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-transform: uppercase;
+}
+
+.badge-ai {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+  border: 1px solid #e9d5ff;
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-transform: uppercase;
+}
+
+.badge-officer {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-transform: uppercase;
+}
+
 .badge-demo {
   background-color: #fef3c7;
   color: #92400e;
   border: 1px dashed #d97706;
-  font-weight: 600;
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.6875rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -67,11 +117,11 @@ body {
   border: 1px solid #10b981;
   font-weight: 600;
   font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 9999px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 /* Micro-animations */
@@ -81,5 +131,6 @@ body {
 
 .hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.08);
 }
+

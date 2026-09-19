@@ -40,6 +40,12 @@ export default function ChatbotModal() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('open-agri-chatbot', handleOpen);
+    return () => window.removeEventListener('open-agri-chatbot', handleOpen);
+  }, []);
+
+  useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
