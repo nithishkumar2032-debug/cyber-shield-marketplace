@@ -220,7 +220,7 @@ export default function BuyerPage() {
                 {buyer.organizationName || 'ITC Agri Business'}
               </h1>
               <span className="px-2.5 py-0.5 rounded bg-[#97f5cc] text-[#002115] text-[11px] font-bold tracking-wider uppercase flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#005d42]" /> Institutional Tier-1
+                <ShieldCheck className="w-3.5 h-3.5 text-[#005d42]" /> Registered Buyer
               </span>
               <span className="px-2.5 py-0.5 rounded bg-[#e2e7ff] text-[#64748b] text-[11px] font-bold font-mono">
                 GSTIN: 33AAACI1681G1ZM
@@ -232,7 +232,7 @@ export default function BuyerPage() {
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Shield className="w-3.5 h-3.5 text-[#4e45d5]" /> Clearing Node: Cyber Shield v2.4
+                <Shield className="w-3.5 h-3.5 text-[#4e45d5]" /> Portal Version 2.4
               </span>
               <span>•</span>
               <span>Purchaser: <b className="text-[#131b2e]">{buyer.authorizedPurchaser}</b></span>
@@ -252,7 +252,7 @@ export default function BuyerPage() {
             </div>
             <div className="text-[11px] text-[#64748b] flex items-center gap-1 mt-0.5">
               <Lock className="w-3 h-3 text-[#4e45d5]" />
-              SBI Protected Sovereign Agri-Escrow Vault
+              SBI Escrow Account
             </div>
           </div>
           <button
@@ -409,10 +409,10 @@ export default function BuyerPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="px-2.5 py-1 rounded bg-[#e2e7ff] text-[#131b2e] text-[11px] font-mono font-semibold">
-                      MANDI: TN-THJ-04
+                      Mandi ID: TN-THJ-04
                     </span>
                     <span className="px-2.5 py-1 rounded bg-[#e3dfff] text-[#100069] text-[11px] font-bold flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-[#4e45d5]" /> AI DYNAMIC RATES
+                      <Sparkles className="w-3 h-3 text-[#4e45d5]" /> LIVE RATES
                     </span>
                   </div>
                 </div>
@@ -450,7 +450,7 @@ export default function BuyerPage() {
                 {/* Detailed Cost Breakdown Table */}
                 <div className="space-y-2">
                   <span className="text-[11px] font-bold text-[#64748b] uppercase tracking-wider">
-                    TRANSACTION VALUATION MATRIX
+                    PAYMENT BREAKDOWN
                   </span>
                   <div className="bg-[#ffffff] rounded-2xl overflow-hidden border border-[#e2e7ff] shadow-sm">
                     <div className="flex items-center justify-between py-2.5 px-4 bg-[#e2e7ff]/70 text-[11px] font-bold text-[#64748b] uppercase tracking-wider">
@@ -473,7 +473,7 @@ export default function BuyerPage() {
                     <div className="flex items-center justify-between py-3 px-4 bg-[#f2f3ff]/50 border-b border-[#f2f3ff]">
                       <div className="flex flex-col">
                         <span className="text-sm font-semibold text-[#131b2e]">
-                          Institutional Cold-Transit Freight Allocation
+                          Transport Cost
                         </span>
                         <span className="text-xs text-[#64748b]">
                           Route: Thanjavur Mandi to {destinationCity} ({activeWeight.toLocaleString()} kg @ ₹{freightPerKgInr.toFixed(2)} / kg)
@@ -488,7 +488,7 @@ export default function BuyerPage() {
                       <div className="flex flex-col">
                         <span className="text-sm font-semibold text-[#131b2e]">Govt. Mandi Fee & Market Cess (0%)</span>
                         <span className="text-xs text-[#005d42] font-semibold">
-                          Direct National Marketplace Protocol Exemption
+                          Fee Waived
                         </span>
                       </div>
                       <span className="text-sm font-bold text-[#131b2e]">₹0.00</span>
@@ -508,7 +508,7 @@ export default function BuyerPage() {
                           ₹{totalClearingVal.toLocaleString('en-IN')}
                         </div>
                         <span className="text-[10px] font-bold text-[#64748b] tracking-wider uppercase">
-                          ALL INCLUSIVE ESCROW OBLIGATION
+                          TOTAL ESCROW AMOUNT
                         </span>
                       </div>
                     </div>
@@ -544,7 +544,7 @@ export default function BuyerPage() {
                         STIPULATION MET
                       </span>
                       <span className="text-[11px] text-[#64748b] font-mono">
-                        ISO 9001:2015 SETTLEMENT
+                        SECURE PAYMENT
                       </span>
                     </div>
                   </div>
@@ -647,7 +647,7 @@ export default function BuyerPage() {
 
                 <div className="bg-[#f2f3ff] p-3 rounded-xl flex items-center gap-2.5 border border-[#dae2fd] text-xs text-[#64748b]">
                   <ShieldCheck className="w-4 h-4 text-[#005d42] shrink-0" />
-                  <span>256-bit State Banking Escrow Encryption Protocol</span>
+                  <span>Secure Bank Escrow Protocol</span>
                 </div>
               </div>
             </div>

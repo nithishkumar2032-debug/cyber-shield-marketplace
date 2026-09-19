@@ -49,12 +49,17 @@ export default function OfficerPage() {
     officeAddress: 'Agri Extension Center, Budalur',
   };
 
-  const allocations = state?.allocations || [];
+  const officerListings = (state?.listings || []).filter((l) => l.district === officer.district);
+  const officerListingIds = officerListings.map((l) => l.id);
+
+  const allocations = (state?.allocations || []).filter((a) => officerListingIds.includes(a.listingId));
   const pendingAllocations = allocations.filter((a) => a.status === 'proposed');
-  const orders = state?.orders || [];
+  
+  const orders = (state?.orders || []).filter((o) => officerListingIds.includes(o.listingId));
   const pickupReadyOrders = orders.filter((o) => o.status === 'secured' || o.status === 'vehicle_assigned');
-  const grievances = state?.grievances || [];
-  const pendingFarmers = state?.farmers.filter((f) => f.status === 'onboarding_requested') || [];
+  
+  const grievances = (state?.grievances || []);
+  const pendingFarmers = (state?.farmers || []).filter((f) => f.status === 'onboarding_requested' && f.district === officer.district);
 
   // Phone Confirmation Form State
   const [selectedAllocationId, setSelectedAllocationId] = useState<string | null>(null);
@@ -412,46 +417,7 @@ export default function OfficerPage() {
                   </div>
                 </div>
 
-                {/* Triple-Confirmation Digital Sign-Off Matrix */}
-                <div className="space-y-2">
-                  <span className="text-[11px] font-bold text-[#64748b] uppercase tracking-wider block">
-                    TRIPLE-STAKEHOLDER DIGITAL VALIDATION MANIFEST
-                  </span>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <div className="p-3 rounded-xl bg-[#f2f3ff] border border-[#dae2fd] flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-[#005d42] text-white flex items-center justify-center shrink-0 mt-0.5">
-                        <Check className="w-3 h-3" />
-                      </div>
-                      <div className="text-xs">
-                        <span className="font-bold text-[#131b2e] block">1. Farmer Biometric</span>
-                        <span className="text-[#64748b] text-[11px]">Ramanathan S. (Aadhaar Verified)</span>
-                        <span className="text-[10px] text-[#005d42] font-mono font-bold block mt-0.5">TOKEN: AUTH-FMR-904</span>
-                      </div>
-                    </div>
 
-                    <div className="p-3 rounded-xl bg-[#f2f3ff] border border-[#dae2fd] flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-[#005d42] text-white flex items-center justify-center shrink-0 mt-0.5">
-                        <Check className="w-3 h-3" />
-                      </div>
-                      <div className="text-xs">
-                        <span className="font-bold text-[#131b2e] block">2. Transporter Slip</span>
-                        <span className="text-[#64748b] text-[11px]">Driver Murugan (Geo-tag Valid)</span>
-                        <span className="text-[10px] text-[#4e45d5] font-mono font-bold block mt-0.5">WAYBILL ACCEPTED</span>
-                      </div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-[#97f5cc]/60 border border-[#005d42]/30 flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-[#005d42] text-white flex items-center justify-center shrink-0 mt-0.5">
-                        <ShieldCheck className="w-3 h-3" />
-                      </div>
-                      <div className="text-xs">
-                        <span className="font-bold text-[#002115] block">3. Officer Seal</span>
-                        <span className="text-[#002115]/80 text-[11px]">Dr. Rajesh Kumar (Digital Seal)</span>
-                        <span className="text-[10px] text-[#005d42] font-bold block mt-0.5">OFFICER SIGNED</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
                 {/* Live Escrow Execution Container */}
                 <div className="pt-2 space-y-3">

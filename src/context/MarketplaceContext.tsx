@@ -29,6 +29,7 @@ interface MarketplaceContextType {
   verifyBuyer: (buyerId: string, newStatus: 'verified' | 'correction_required', reason?: string) => Promise<any>;
   submitGrievance: (grievanceData: any) => Promise<any>;
   respondGrievance: (grievanceId: string, message: string, newStatus?: string, resolutionNotes?: string) => Promise<any>;
+  appointOfficer: (officerData: any) => Promise<any>;
   resetDatabase: () => Promise<void>;
 }
 
@@ -244,6 +245,17 @@ export function MarketplaceProvider({ children }: { children: ReactNode }) {
     return result;
   };
 
+  const appointOfficer = async (officerData: any) => {
+    const res = await fetch('/api/officers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'appoint', ...officerData }),
+    });
+    const result = await res.json();
+    await fetchBootstrap();
+    return result;
+  };
+
   const resetDatabase = async () => {
     await fetch('/api/reset', { method: 'POST' });
     await fetchBootstrap();
@@ -273,6 +285,7 @@ export function MarketplaceProvider({ children }: { children: ReactNode }) {
         verifyBuyer,
         submitGrievance,
         respondGrievance,
+        appointOfficer,
         resetDatabase,
       }}
     >

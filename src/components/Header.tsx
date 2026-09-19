@@ -86,13 +86,10 @@ export default function Header() {
   const UserIcon = user.icon;
 
   const navItems = [
-    { label: 'Explore Market', path: '/explore' },
-    { label: 'Active Bids & Escrow', path: '/bids' },
     { label: 'Farmer Portal', path: '/farmer' },
-    { label: 'B2B Buyer Hub', path: '/buyer' },
-    { label: 'Officer Console', path: '/officer' },
-    { label: 'Grievance Desk', path: '/grievances' },
-    { label: 'Officer Directory', path: '/officers' },
+    { label: 'Buyer Hub', path: '/buyer' },
+    { label: 'Officer Desk', path: '/officer' },
+    { label: 'Admin Portal', path: '/admin' },
   ];
 
   return (

@@ -20,14 +20,38 @@ import {
 } from 'lucide-react';
 
 export default function AdminPage() {
-  const { state, verifyBuyer } = useMarketplace();
-  const [activeTab, setActiveTab] = useState<'buyers' | 'catalogue' | 'policies' | 'audit'>('buyers');
+  const { state, verifyBuyer, appointOfficer } = useMarketplace();
+  const [activeTab, setActiveTab] = useState<'buyers' | 'catalogue' | 'policies' | 'audit' | 'officers'>('buyers');
 
   const buyers = state?.buyers || [];
   const catalogue = state?.catalogue || [];
   const auditLogs = state?.auditLogs || [];
+  const officers = state?.officers || [];
 
   const [decisionMsg, setDecisionMsg] = useState<string | null>(null);
+  const [newOfficer, setNewOfficer] = useState({
+    officerName: '',
+    roleTitle: 'Village Agriculture Officer',
+    state: 'Tamil Nadu',
+    district: 'Thanjavur',
+    taluka: '',
+    phone: '',
+    email: '',
+    officeAddress: '',
+  });
+
+  const handleAppoint = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setDecisionMsg(null);
+    const res = await appointOfficer(newOfficer);
+    if (res.success) {
+      setDecisionMsg(`Officer ${newOfficer.officerName} appointed successfully!`);
+      setTimeout(() => setDecisionMsg(null), 3000);
+      setNewOfficer({ ...newOfficer, officerName: '', phone: '', email: '', officeAddress: '', taluka: '' });
+    } else {
+      alert(res.error);
+    }
+  };
 
   const handleVerify = async (buyerId: string, newStatus: 'verified' | 'correction_required', reason?: string) => {
     setDecisionMsg(null);
@@ -116,6 +140,17 @@ export default function AdminPage() {
         >
           <History className="w-4 h-4" />
           <span>Immutable Audit Log ({auditLogs.length})</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('officers')}
+          className={`pb-3 px-4 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition-colors flex items-center gap-1.5 ${
+            activeTab === 'officers'
+              ? 'border-amber-700 text-amber-800'
+              : 'border-transparent text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <UserCheck className="w-4 h-4" />
+          <span>Officer Jurisdictions ({officers.length})</span>
         </button>
       </div>
 
@@ -346,6 +381,105 @@ export default function AdminPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Tab: Officer Jurisdictions */}
+      {activeTab === 'officers' && (
+        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div>
+              <h3 className="text-base font-bold text-slate-900">Officer Jurisdictions (Tamil Nadu Only)</h3>
+              <p className="text-xs text-slate-500">
+                Appoint and manage Agricultural Officers for districts in Tamil Nadu.
+              </p>
+            </div>
+            <span className="badge-demo text-[10px] py-0 px-2">TN RESTRICTED</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Form */}
+            <form onSubmit={handleAppoint} className="space-y-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+              <h4 className="font-bold text-slate-800 text-sm border-b border-slate-200 pb-2">Appoint New Officer</h4>
+              
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">State</label>
+                <input type="text" value="Tamil Nadu" disabled className="w-full text-sm p-2 rounded border border-slate-300 bg-slate-200 cursor-not-allowed" />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">District</label>
+                <select
+                  value={newOfficer.district}
+                  onChange={(e) => setNewOfficer({ ...newOfficer, district: e.target.value })}
+                  className="w-full text-sm p-2 rounded border border-slate-300 bg-white"
+                >
+                  {['Thanjavur', 'Madurai', 'Coimbatore', 'Tiruchirappalli', 'Pudukkottai', 'Erode', 'Chennai'].map((d) => (
+                    <option key={d} value={d}>{d}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">Role Title</label>
+                <select
+                  value={newOfficer.roleTitle}
+                  onChange={(e) => setNewOfficer({ ...newOfficer, roleTitle: e.target.value })}
+                  className="w-full text-sm p-2 rounded border border-slate-300 bg-white"
+                >
+                  <option value="Village Agriculture Officer">Village Agriculture Officer</option>
+                  <option value="Taluka Agriculture Officer">Taluka Agriculture Officer</option>
+                  <option value="District Agricultural Officer">District Agricultural Officer</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">Officer Name</label>
+                <input required type="text" value={newOfficer.officerName} onChange={(e) => setNewOfficer({ ...newOfficer, officerName: e.target.value })} className="w-full text-sm p-2 rounded border border-slate-300 bg-white" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Phone</label>
+                  <input required type="text" value={newOfficer.phone} onChange={(e) => setNewOfficer({ ...newOfficer, phone: e.target.value })} className="w-full text-sm p-2 rounded border border-slate-300 bg-white" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Email</label>
+                  <input required type="email" value={newOfficer.email} onChange={(e) => setNewOfficer({ ...newOfficer, email: e.target.value })} className="w-full text-sm p-2 rounded border border-slate-300 bg-white" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">Office Address</label>
+                <input required type="text" value={newOfficer.officeAddress} onChange={(e) => setNewOfficer({ ...newOfficer, officeAddress: e.target.value })} className="w-full text-sm p-2 rounded border border-slate-300 bg-white" />
+              </div>
+
+              <button type="submit" className="w-full py-2 bg-amber-700 hover:bg-amber-800 text-white text-sm font-bold rounded-xl transition-colors mt-2">
+                Appoint Officer
+              </button>
+            </form>
+
+            {/* List */}
+            <div className="space-y-3 max-h-[600px] overflow-y-auto">
+              <h4 className="font-bold text-slate-800 text-sm pb-2">Active Officers</h4>
+              {officers.map((off) => (
+                <div key={off.id} className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="font-bold text-slate-900 text-sm">{off.officerName}</span>
+                    <span className="px-2 py-0.5 bg-amber-100 text-amber-800 font-bold rounded text-[10px] uppercase">
+                      {off.district}
+                    </span>
+                  </div>
+                  <div className="text-slate-600 font-medium">{off.roleTitle}</div>
+                  <div className="text-slate-500">Phone: {off.phone} | Email: {off.email}</div>
+                  <div className="text-slate-400 mt-2 text-[11px]">{off.officeAddress}</div>
+                </div>
+              ))}
+              {officers.length === 0 && (
+                <div className="text-center text-slate-500 text-sm py-10">No officers found.</div>
+              )}
+            </div>
           </div>
         </div>
       )}

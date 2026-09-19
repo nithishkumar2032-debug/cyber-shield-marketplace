@@ -33,6 +33,10 @@
   --color-surface-high: #e2e7ff;
 }
 
+html {
+  font-size: 18px; /* Global scale up for better readability */
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
