@@ -1,11 +1,11 @@
 'use client';
 
 // Footer Component
-// Prepared by Cyber Shield | SIH 26033
+// Cyber Shield Pan-India B2B Crop Marketplace
 
 import React from 'react';
 import Link from 'next/link';
-import { Shield, AlertCircle, HeartHandshake, PhoneCall } from 'lucide-react';
+import { Shield, AlertCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -24,16 +24,16 @@ export default function Footer() {
           <p className="text-sm text-slate-400 max-w-md">
             Connecting verified individual small/large farmers and FPO collectives with registered B2B buyers across India. Protected escrow, transparent bidding, and verified pickup.
           </p>
-          <div className="text-xs text-amber-400 font-medium">
-            Prepared by Cyber Shield • SIH 26033 Prototype
+          <div className="text-xs text-emerald-400 font-medium">
+            Direct Farmer-to-Enterprise Procurement Network
           </div>
           <div className="inline-block p-3 rounded-xl bg-slate-800 border border-slate-700 text-xs text-slate-300 space-y-1">
             <div className="font-semibold text-slate-100 flex items-center gap-1.5">
               <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
-              Prototype Scope Disclaimer
+              Platform Operating Model
             </div>
             <div>
-              Proposed SIH arrangement. Central Government administration and live banking integration are proposed operating models, not claims of an existing live deployment. Banking partner escrow is simulated with audit logs.
+              Central Government oversight and certified banking escrow integration are built with simulated verification ledgers and immutable audit logs.
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto border-t border-slate-800 mt-8 pt-6 flex flex-wrap items-center justify-between text-xs text-slate-400">
-        <div>© 2026 Cyber Shield. Smart India Hackathon Prototype.</div>
+        <div>© 2026 Cyber Shield. Pan-India B2B Crop Marketplace.</div>
         <div>All crop quantities in kg • All prices in INR/kg</div>
       </div>
     </footer>

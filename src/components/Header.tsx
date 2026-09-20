@@ -1,11 +1,10 @@
 'use client';
 
-// Sovereign Institutional Navigation Header & Role Switcher
-// Designed per Google Stitch Design System (AgroShield Exchange | SIH 26033)
+// Navigation Header with Horizontal Logins
+// Cyber Shield Pan-India B2B Crop Marketplace
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useMarketplace } from '@/context/MarketplaceContext';
 import { UserRole } from '@/types';
@@ -15,29 +14,20 @@ import {
   Building2,
   UserCheck,
   ShieldCheck,
-  Sparkles,
-  Lock,
-  Zap,
-  CheckCircle2,
   RefreshCw,
-  Truck,
-  FileText,
-  AlertTriangle,
-  User,
-  ChevronDown,
+  Menu,
+  X,
 } from 'lucide-react';
 
 export default function Header() {
   const { role, setRole, resetDatabase } = useMarketplace();
-  const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
-  const [language, setLanguage] = useState<'EN' | 'HI' | 'TA'>('EN');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
   const handleRoleSelect = (newRole: UserRole) => {
     setRole(newRole);
-    setRoleDropdownOpen(false);
     if (newRole === 'farmer') router.push('/farmer');
     else if (newRole === 'officer') router.push('/officer');
     else if (newRole === 'buyer') router.push('/buyer');
@@ -47,7 +37,7 @@ export default function Header() {
   };
 
   const handleReset = async () => {
-    if (confirm('Reset marketplace database to initial prototype seed data?')) {
+    if (confirm('Reset marketplace database to initial seed data?')) {
       setIsResetting(true);
       await resetDatabase();
       setIsResetting(false);
@@ -55,249 +45,276 @@ export default function Header() {
     }
   };
 
-  const openChatbot = () => {
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('open-agri-chatbot'));
-    }
-  };
-
-  const openFreightModal = () => {
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('open-freight-estimator'));
-    }
-  };
-
-  const getUserDetails = () => {
-    switch (role) {
-      case 'farmer':
-        return { name: 'Murugan K.', title: 'Farmer (Cauvery Delta FPO)', icon: Sprout, color: 'text-emerald-700 bg-emerald-100' };
-      case 'officer':
-        return { name: 'Dr. Anbarasan V.', title: 'AO (Thanjavur Zone)', icon: ShieldCheck, color: 'text-blue-700 bg-blue-100' };
-      case 'buyer':
-        return { name: 'AgroPure Foods Ltd', title: 'Institutional Tier-1', icon: Building2, color: 'text-purple-700 bg-purple-100' };
-      case 'admin':
-        return { name: 'Govt. Oversight Desk', title: 'Platform Authority', icon: UserCheck, color: 'text-amber-700 bg-amber-100' };
-      default:
-        return { name: 'Public Guest', title: 'All-India Observer', icon: User, color: 'text-slate-700 bg-slate-100' };
-    }
-  };
-
-  const user = getUserDetails();
-  const UserIcon = user.icon;
-
-  const navItems = [
-    { label: 'Farmer Portal', path: '/farmer' },
-    { label: 'Buyer Hub', path: '/buyer' },
-    { label: 'Officer Desk', path: '/officer' },
-    { label: 'Admin Portal', path: '/admin' },
-  ];
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-slate-200">
-      {/* 1. Top Tier: Sovereign Brand & Core Control Strip */}
-      <div className="h-16 sm:h-20 w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 border-b border-slate-100">
-        {/* Left Brand Identity */}
-        <Link href="/" className="flex items-center gap-3 min-w-max group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-900 p-2 flex items-center justify-center shadow-md border border-emerald-500/30 group-hover:scale-105 transition-all">
-            <Shield className="w-5 h-5 text-emerald-100" />
-          </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <span className="font-heading font-bold text-base sm:text-lg text-[#005d42] tracking-tight">
-                Cyber Shield
-              </span>
-              <span className="px-1.5 py-0.5 bg-[#eaedff] text-[#4e45d5] font-bold text-[10px] tracking-wider rounded uppercase">
-                SIH 26033
-              </span>
-            </div>
-            <span className="text-[11px] text-slate-500 font-medium hidden sm:inline">
-              Pan-India B2B Crop Marketplace • Prepared by Cyber Shield
-            </span>
-          </div>
-        </Link>
-
-        {/* Center/Right Protocol Badges & Actions */}
+    <header className="sticky top-0 z-40 w-full border-b border-emerald-800/40 bg-emerald-900 text-white shadow-md">
+      {/* Top Institutional Platform Strip */}
+      <div className="bg-emerald-950 px-4 py-1.5 text-xs text-emerald-200/90 flex flex-wrap items-center justify-between border-b border-emerald-800/30">
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-emerald-400">Pan-India B2B Agriculture Platform</span>
+          <span className="text-emerald-600 hidden sm:inline">•</span>
+          <span className="text-emerald-300/80 hidden sm:inline">Direct Mandi & Escrow Trading Network</span>
+        </div>
         <div className="flex items-center gap-3">
-          {/* Institutional Badges (Desktop) */}
-          <div className="hidden xl:flex items-center gap-1.5">
-            <span className="badge-escrow">
-              <Lock className="w-3 h-3" />
-              DEMO BANKING ESCROW
-            </span>
-            <span className="badge-ai">
-              <Zap className="w-3 h-3" />
-              AI DYNAMIC RATES
-            </span>
-            <span className="badge-officer">
-              <CheckCircle2 className="w-3 h-3" />
-              OFFICER VERIFIED
-            </span>
-          </div>
+          <span className="hidden sm:inline text-emerald-400/80">Escrow:</span>
+          <span className="badge-demo text-[10px] py-0 px-2">SIMULATED BANKING ESCROW</span>
+        </div>
+      </div>
 
-          {/* Ask Agri-Assistant Chatbot Trigger */}
-          <button
-            type="button"
-            onClick={openChatbot}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#4e45d5] hover:bg-[#4338ca] text-white font-medium text-xs shadow-sm transition-all hover:shadow"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-purple-200" />
-            <span className="font-semibold">Ask Agri-Assistant</span>
-          </button>
+      {/* Main Navigation Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 gap-4">
+          {/* Brand Logo & Name */}
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 p-2 flex items-center justify-center shadow-lg border border-emerald-400/30">
+              <Shield className="w-6 h-6 text-white group-hover:scale-105 transition-transform" />
+            </div>
+            <div>
+              <div className="text-base sm:text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
+                Cyber Shield
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-700/60 text-emerald-200 border border-emerald-600/40">
+                  B2B
+                </span>
+              </div>
+              <div className="text-[11px] text-emerald-300 tracking-wide font-medium">
+                Pan-India Crop Marketplace
+              </div>
+            </div>
+          </Link>
 
-          {/* Language Switcher */}
-          <div className="hidden md:flex items-center bg-[#f2f3ff] rounded-lg p-0.5 border border-[#e2e7ff]">
-            <button
-              onClick={() => setLanguage('EN')}
-              className={`px-2 py-1 rounded text-[11px] font-bold transition-all ${
-                language === 'EN' ? 'bg-white text-[#131b2e] shadow-2xs' : 'text-slate-500 hover:text-slate-800'
+          {/* Center Links */}
+          <nav className="hidden lg:flex items-center gap-1">
+            <Link
+              href="/explore"
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                pathname === '/explore'
+                  ? 'bg-emerald-800 text-white shadow-inner'
+                  : 'text-emerald-100 hover:bg-emerald-800/60 hover:text-white'
               }`}
             >
-              EN
-            </button>
-            <button
-              onClick={() => setLanguage('HI')}
-              className={`px-2 py-1 rounded text-[11px] font-bold transition-all ${
-                language === 'HI' ? 'bg-white text-[#131b2e] shadow-2xs' : 'text-slate-500 hover:text-slate-800'
+              Marketplace
+            </Link>
+            <Link
+              href="/bids"
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                pathname === '/bids'
+                  ? 'bg-emerald-800 text-white shadow-inner'
+                  : 'text-emerald-100 hover:bg-emerald-800/60 hover:text-white'
               }`}
             >
-              हिन्दी
-            </button>
-            <button
-              onClick={() => setLanguage('TA')}
-              className={`px-2 py-1 rounded text-[11px] font-bold transition-all ${
-                language === 'TA' ? 'bg-white text-[#131b2e] shadow-2xs' : 'text-slate-500 hover:text-slate-800'
+              Bidding Windows
+            </Link>
+            <Link
+              href="/officers"
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                pathname === '/officers'
+                  ? 'bg-emerald-800 text-white shadow-inner'
+                  : 'text-emerald-100 hover:bg-emerald-800/60 hover:text-white'
               }`}
             >
-              தமிழ்
-            </button>
-          </div>
+              Officer Directory
+            </Link>
+            <Link
+              href="/grievances"
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                pathname === '/grievances'
+                  ? 'bg-emerald-800 text-white shadow-inner'
+                  : 'text-emerald-100 hover:bg-emerald-800/60 hover:text-white'
+              }`}
+            >
+              Grievances
+            </Link>
+          </nav>
 
-          {/* Role Persona Switcher Pill */}
-          <div className="relative">
+          {/* Top Horizontal Logins & Reset */}
+          <div className="hidden sm:flex items-center gap-1.5 sm:gap-2">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-300/80 mr-1 hidden xl:inline">
+              Portals:
+            </span>
+
+            <button
+              onClick={() => handleRoleSelect('farmer')}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+                role === 'farmer'
+                  ? 'bg-emerald-800 text-white border-emerald-400 shadow-sm ring-1 ring-emerald-400'
+                  : 'bg-emerald-950/70 text-emerald-100 border-emerald-700/60 hover:bg-emerald-800 hover:text-white'
+              }`}
+              title="Farmer & FPO Portal Login"
+            >
+              <Sprout className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Farmer</span>
+            </button>
+
+            <button
+              onClick={() => handleRoleSelect('officer')}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+                role === 'officer'
+                  ? 'bg-blue-900 text-white border-blue-400 shadow-sm ring-1 ring-blue-400'
+                  : 'bg-slate-900/70 text-blue-200 border-blue-800/60 hover:bg-blue-900/80 hover:text-white'
+              }`}
+              title="Agricultural Officer Desk Login"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+              <span>Officer</span>
+            </button>
+
+            <button
+              onClick={() => handleRoleSelect('buyer')}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+                role === 'buyer'
+                  ? 'bg-purple-900 text-white border-purple-400 shadow-sm ring-1 ring-purple-400'
+                  : 'bg-slate-900/70 text-purple-200 border-purple-800/60 hover:bg-purple-900/80 hover:text-white'
+              }`}
+              title="Registered B2B Buyer Hub Login"
+            >
+              <Building2 className="w-3.5 h-3.5 text-purple-400" />
+              <span>Buyer</span>
+            </button>
+
+            <button
+              onClick={() => handleRoleSelect('admin')}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+                role === 'admin'
+                  ? 'bg-amber-900 text-white border-amber-400 shadow-sm ring-1 ring-amber-400'
+                  : 'bg-slate-900/70 text-amber-200 border-amber-800/60 hover:bg-amber-900/80 hover:text-white'
+              }`}
+              title="Government Platform Administrator Login"
+            >
+              <UserCheck className="w-3.5 h-3.5 text-amber-400" />
+              <span>Admin</span>
+            </button>
+
+            <div className="h-5 w-px bg-emerald-800/60 mx-1"></div>
+
+            {/* Quick Reset Demo State */}
             <button
               type="button"
-              onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[#f2f3ff] hover:bg-[#e2e7ff] text-[#131b2e] border border-slate-200 text-xs font-semibold shadow-2xs transition-all"
+              onClick={handleReset}
+              disabled={isResetting}
+              className="p-1.5 rounded-lg bg-emerald-800/80 hover:bg-emerald-700 text-emerald-200 hover:text-white transition-colors border border-emerald-700/50"
+              title="Reset database to fresh seed state"
             >
-              <div className={`w-5 h-5 rounded-full flex items-center justify-center ${user.color}`}>
-                <UserIcon className="w-3 h-3" />
-              </div>
-              <div className="hidden sm:flex flex-col text-left">
-                <span className="text-[11px] font-bold text-slate-800 leading-none">{user.name}</span>
-                <span className="text-[9px] text-slate-500 leading-none mt-0.5">{user.title}</span>
-              </div>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+              <RefreshCw className={`w-3.5 h-3.5 ${isResetting ? 'animate-spin' : ''}`} />
             </button>
+          </div>
 
-            {roleDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-72 rounded-xl bg-white text-slate-900 shadow-xl border border-slate-200 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-                <div className="px-3 py-1.5 border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
-                  <span>Switch Role Perspective</span>
-                  <button
-                    onClick={handleReset}
-                    disabled={isResetting}
-                    className="text-emerald-700 hover:underline flex items-center gap-1 font-bold text-[10px]"
-                  >
-                    <RefreshCw className={`w-3 h-3 ${isResetting ? 'animate-spin' : ''}`} />
-                    <span>Reset Data</span>
-                  </button>
-                </div>
-
-                <button
-                  onClick={() => handleRoleSelect('farmer')}
-                  className={`w-full text-left px-3 py-2 hover:bg-emerald-50 flex items-center gap-2.5 text-xs transition-colors ${
-                    role === 'farmer' ? 'bg-emerald-50/80 font-bold text-emerald-950' : 'text-slate-800'
-                  }`}
-                >
-                  <Sprout className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <div>
-                    <div>Farmer / FPO Representative</div>
-                    <div className="text-[10px] text-slate-500">View bids, allocate kg, track escrow & OTP</div>
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => handleRoleSelect('officer')}
-                  className={`w-full text-left px-3 py-2 hover:bg-blue-50 flex items-center gap-2.5 text-xs transition-colors ${
-                    role === 'officer' ? 'bg-blue-50/80 font-bold text-blue-950' : 'text-slate-800'
-                  }`}
-                >
-                  <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
-                  <div>
-                    <div>Agricultural Officer</div>
-                    <div className="text-[10px] text-slate-500">Field visits, verify bids & pickup handover</div>
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => handleRoleSelect('buyer')}
-                  className={`w-full text-left px-3 py-2 hover:bg-purple-50 flex items-center gap-2.5 text-xs transition-colors ${
-                    role === 'buyer' ? 'bg-purple-50/80 font-bold text-purple-950' : 'text-slate-800'
-                  }`}
-                >
-                  <Building2 className="w-4 h-4 text-purple-600 shrink-0" />
-                  <div>
-                    <div>Registered B2B Buyer</div>
-                    <div className="text-[10px] text-slate-500">Submit bids, fund escrow, assign transport</div>
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => handleRoleSelect('admin')}
-                  className={`w-full text-left px-3 py-2 hover:bg-amber-50 flex items-center gap-2.5 text-xs transition-colors ${
-                    role === 'admin' ? 'bg-amber-50/80 font-bold text-amber-950' : 'text-slate-800'
-                  }`}
-                >
-                  <UserCheck className="w-4 h-4 text-amber-600 shrink-0" />
-                  <div>
-                    <div>Platform Administrator</div>
-                    <div className="text-[10px] text-slate-500">KYC verification, policy rules & audit trail</div>
-                  </div>
-                </button>
-              </div>
-            )}
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden items-center gap-2">
+            <button
+              type="button"
+              onClick={handleReset}
+              disabled={isResetting}
+              className="p-1.5 rounded-lg bg-emerald-800/80 text-emerald-200 border border-emerald-700/50 sm:hidden"
+              title="Reset data"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${isResetting ? 'animate-spin' : ''}`} />
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg bg-emerald-800 text-emerald-200 hover:text-white"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* 2. Secondary Navigation Rail from Google Stitch */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 bg-[#f2f3ff] border-b border-[#e2e7ff] flex items-center justify-between overflow-x-auto">
-        <nav className="flex items-center gap-1 py-1.5 text-xs font-medium whitespace-nowrap">
-          {navItems.map((item) => {
-            const isActive = pathname === item.path;
-            return (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={`px-3 py-1.5 rounded-lg transition-all ${
-                  isActive
-                    ? 'bg-[#005d42] text-white font-bold shadow-sm'
-                    : 'text-slate-600 hover:text-[#131b2e] hover:bg-white/60'
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden border-t border-emerald-800 bg-emerald-950 px-4 pt-3 pb-5 space-y-3">
+          <div className="grid grid-cols-2 gap-2 text-xs font-medium">
+            <Link
+              href="/explore"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-lg bg-emerald-900/60 text-emerald-100 hover:bg-emerald-800"
+            >
+              Marketplace
+            </Link>
+            <Link
+              href="/bids"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-lg bg-emerald-900/60 text-emerald-100 hover:bg-emerald-800"
+            >
+              Bids Window
+            </Link>
+            <Link
+              href="/officers"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-lg bg-emerald-900/60 text-emerald-100 hover:bg-emerald-800"
+            >
+              Officer Directory
+            </Link>
+            <Link
+              href="/grievances"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-lg bg-emerald-900/60 text-emerald-100 hover:bg-emerald-800"
+            >
+              Grievances
+            </Link>
+          </div>
+
+          <div className="pt-2 border-t border-emerald-800/60">
+            <div className="text-xs font-semibold text-emerald-400 mb-2">Login Portals:</div>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <button
+                onClick={() => {
+                  handleRoleSelect('farmer');
+                  setMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 ${
+                  role === 'farmer'
+                    ? 'bg-emerald-800 text-white border-emerald-400'
+                    : 'bg-emerald-900/60 text-emerald-200 border-emerald-700/50'
                 }`}
               >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
-
-      {/* 3. Live MSP & Institutional Settlement Ticker from Stitch */}
-      <div className="w-full bg-[#eaedff] py-1 px-4 sm:px-6 lg:px-8 flex items-center justify-between text-[#131b2e] text-[11px] border-b border-[#dae2fd]">
-        <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
-          <span className="flex items-center gap-1 text-[#005d42] font-black tracking-wider uppercase">
-            <span className="w-2 h-2 rounded-full bg-[#005d42] animate-ping inline-block"></span>
-            LIVE MSP
-          </span>
-          <span className="text-slate-400">|</span>
-          <span className="text-slate-700">
-            Govt. Benchmark MSP live update: <b>Paddy ₹2,203/100kg (₹22.03/kg)</b> • Certified Escrow Guarantee Active • Metric Standards: <b>kg & ₹/kg only</b>
-          </span>
+                <Sprout className="w-4 h-4 text-emerald-400" />
+                <span>Farmer Login</span>
+              </button>
+              <button
+                onClick={() => {
+                  handleRoleSelect('officer');
+                  setMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 ${
+                  role === 'officer'
+                    ? 'bg-blue-900 text-white border-blue-400'
+                    : 'bg-blue-950/60 text-blue-200 border-blue-800/50'
+                }`}
+              >
+                <ShieldCheck className="w-4 h-4 text-blue-400" />
+                <span>Officer Login</span>
+              </button>
+              <button
+                onClick={() => {
+                  handleRoleSelect('buyer');
+                  setMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 ${
+                  role === 'buyer'
+                    ? 'bg-purple-900 text-white border-purple-400'
+                    : 'bg-purple-950/60 text-purple-200 border-purple-800/50'
+                }`}
+              >
+                <Building2 className="w-4 h-4 text-purple-400" />
+                <span>Buyer Login</span>
+              </button>
+              <button
+                onClick={() => {
+                  handleRoleSelect('admin');
+                  setMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 ${
+                  role === 'admin'
+                    ? 'bg-amber-900 text-white border-amber-400'
+                    : 'bg-amber-950/60 text-amber-200 border-amber-800/50'
+                }`}
+              >
+                <UserCheck className="w-4 h-4 text-amber-400" />
+                <span>Admin Login</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <span className="hidden lg:inline text-[10px] font-bold uppercase tracking-wider text-slate-500">
-          ISO 9001:2015 COMPLIANT SETTLEMENT
-        </span>
-      </div>
+      )}
     </header>
   );
 }
