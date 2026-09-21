@@ -67,7 +67,8 @@ export default function HomePage() {
                   className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm sm:text-base border border-slate-700 transition-all flex items-center gap-2"
                 >
                   <Clock className="w-4 h-4 text-amber-400" />
-                  <span>View Bidding Windows</span>
+                  <span>View Bidding Windows</span></Link>
+                <Link href="/demo" className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm sm:text-base transition-all flex items-center gap-2">SIH End-to-End Demo</Link><Link href="/bids" className="hidden">
                 </Link>
               </div>
 
