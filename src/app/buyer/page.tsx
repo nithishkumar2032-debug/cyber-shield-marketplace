@@ -57,7 +57,7 @@ export default function BuyerPage() {
     if (res.success) {
       setActionMsg({
         type: 'success',
-        text: `Terms accepted! Order created. Please prepay funds into banking partner escrow before goods release.`,
+        text: `Terms accepted! Order created. Please prepay funds into payment-partner sandbox before goods release.`,
       });
     } else {
       setActionMsg({ type: 'error', text: res.error || 'Failed to accept allocation.' });
@@ -70,7 +70,7 @@ export default function BuyerPage() {
     if (res.success) {
       setActionMsg({
         type: 'success',
-        text: `Simulated Escrow Prepayment Confirmed! Funds are held safely. You may now assign transport.`,
+        text: `Sandbox funding recorded. Funds are simulated and not held in a bank account. You may now assign transport.`,
       });
     } else {
       setActionMsg({ type: 'error', text: res.error || 'Prepayment failed.' });
@@ -201,7 +201,7 @@ export default function BuyerPage() {
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
-          Simulated Escrow Receipts ({myEscrows.length})
+          Sandbox Payment Receipts ({myEscrows.length})
         </button>
       </div>
 
@@ -329,7 +329,7 @@ export default function BuyerPage() {
                         {/* Escrow Status & Action */}
                         <div className="bg-white p-3.5 rounded-xl border border-slate-200 flex flex-col justify-between">
                           <div>
-                            <span className="text-slate-400 block text-[11px]">Banking Partner Escrow</span>
+                            <span className="text-slate-400 block text-[11px]">Payment Partner — Sandbox</span>
                             <div className="font-bold text-slate-900 mt-0.5">
                               {escrow?.status === 'held' ? (
                                 <span className="text-emerald-700">₹{escrow.heldAmount.toLocaleString()} Held</span>
@@ -346,7 +346,7 @@ export default function BuyerPage() {
                               onClick={() => handlePrepay(ord.id)}
                               className="mt-2 py-1.5 px-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-[11px] transition-colors"
                             >
-                              Prepay into Escrow (Demo)
+                              Secure Funds — Sandbox
                             </button>
                           )}
                         </div>
@@ -522,13 +522,13 @@ export default function BuyerPage() {
         </div>
       )}
 
-      {/* Tab: Simulated Escrow Receipts */}
+      {/* Tab: Sandbox Payment Receipts */}
       {activeTab === 'receipts' && (
         <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                Banking Partner Escrow Transaction Receipts
+                Payment Partner — Sandbox Transaction Receipts
               </h3>
               <p className="text-xs text-slate-500">
                 Audit trail of simulated fund receipts, holds, and settlement releases.
