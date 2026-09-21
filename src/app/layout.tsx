@@ -4,20 +4,13 @@ import { MarketplaceProvider } from '@/context/MarketplaceContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatbotModal from '@/components/ChatbotModal';
+import PrototypeBanner from '@/components/PrototypeBanner';
 
 export const metadata: Metadata = {
-  title: 'Pan-India B2B Crop Marketplace | Cyber Shield (SIH 26033)',
+  title: 'Cyber Shield | Trusted Farm-Gate Transaction Layer | SIH 2026',
   description:
-    'Collective selling, transparent quantity-specific bids, and protected banking partner escrow for small and large farmers across India. Prepared by Cyber Shield for Smart India Hackathon 2026.',
-  keywords: [
-    'Pan-India B2B Crop Marketplace',
-    'Cyber Shield',
-    'Smart India Hackathon 2026',
-    'SIH 26033',
-    'FPO Aggregation',
-    'Farmer B2B Escrow',
-    'Agricultural Officer Verification',
-  ],
+    'Cyber Shield is a Smart India Hackathon 2026 prototype for a trusted B2B farm-gate transaction workflow.',
+  keywords: ['Cyber Shield', 'SIH 2026', 'Trusted Farm-Gate Transaction Layer', 'FPO', 'B2B agriculture'],
 };
 
 export default function RootLayout({
@@ -29,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-slate-50 text-slate-900 flex flex-col min-h-screen antialiased">
         <MarketplaceProvider>
+          <PrototypeBanner />
           <Header />
           <main className="flex-1 w-full">{children}</main>
           <Footer />
