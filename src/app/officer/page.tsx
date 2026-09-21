@@ -408,7 +408,7 @@ export default function OfficerPage() {
                 className="w-full py-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs sm:text-sm transition-colors shadow-md flex items-center justify-center gap-2"
               >
                 <Scale className="w-4 h-4" />
-                <span>Verify Scale Weights & Authorize Escrow Release</span>
+                <span>Verify Scale Weights & Record Verified Handover</span>
               </button>
             </form>
           </div>
@@ -420,9 +420,9 @@ export default function OfficerPage() {
             </h4>
             <ul className="space-y-2 text-[11px] leading-relaxed list-disc list-inside">
               <li>Match driver name and vehicle plate number against assignment record.</li>
-              <li>Perform physical weighment in kg on certified digital scale.</li>
+              <li>Perform physical weighment in kg on verified weighing instrument.</li>
               <li>Record shortages as exceptions before handover; settlement pays for accepted weight.</li>
-              <li>Triple sign-off triggers instant simulated bank transfer to seller account.</li>
+              <li>Verified handover generates a settlement instruction; payment completion is simulated in this prototype.</li>
             </ul>
           </div>
         </div>
