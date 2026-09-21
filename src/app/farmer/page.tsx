@@ -495,7 +495,7 @@ export default function FarmerPortalPage() {
 
                       {/* Escrow Status */}
                       <div className="bg-white p-3 rounded-xl border border-slate-200">
-                        <span className="text-slate-400 block text-[11px]">Banking Partner Escrow</span>
+                        <span className="text-slate-400 block text-[11px]">Payment Partner — Sandbox</span>
                         <span className="font-bold text-emerald-700 block">
                           {escrow ? `₹${escrow.heldAmount.toLocaleString()} Held` : 'Awaiting Prepayment'}
                         </span>
