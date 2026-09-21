@@ -1,9 +1,10 @@
 'use client';
 
-// Pan-India B2B Crop Marketplace Landing Page
+// Trusted Farm-Gate Transaction Layer Landing Page
 // Prepared by Cyber Shield | SIH 26033
 
 import React from 'react';
+import TransactionTimeline from '@/components/TransactionTimeline';
 import Link from 'next/link';
 import { useMarketplace } from '@/context/MarketplaceContext';
 import {
@@ -29,6 +30,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-16 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8"><TransactionTimeline completed={8} /></div>
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-emerald-950 via-emerald-900 to-slate-900 text-white pt-16 pb-20 px-4 sm:px-6 lg:px-8 border-b border-emerald-800">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
@@ -49,7 +51,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-base sm:text-lg text-emerald-100/90 leading-relaxed">
-                Collective selling, transparent quantity-specific bids, and protected banking partner escrow for small and large farmers across India.
+                Verify → Trade → Execute → Settlement → Bank → Audit. A simulated B2B transaction workflow connecting farmers/FPOs and verified buyers.
               </p>
 
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
@@ -57,7 +59,7 @@ export default function HomePage() {
                   href="/explore"
                   className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm sm:text-base transition-all shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2 group"
                 >
-                  <span>Explore India-Wide Crops</span>
+                  <span>Explore Crop Lots</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
@@ -77,11 +79,11 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Pre-funded Escrow Protection</span>
+                  <span>Sandbox Payment Protection</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Officer Verified Pickup</span>
+                  <span>Verified Handover Workflow</span>
                 </div>
               </div>
             </div>
@@ -174,7 +176,7 @@ export default function HomePage() {
             Engineered for Ground Realities
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            How the Pan-India Marketplace Protects Farmers
+            How Cyber Shield Protects the Transaction
           </h2>
           <p className="text-sm sm:text-base text-slate-600">
             Addressing middleman dependency, distress sales, delayed pickup, and payment risk with institutional safeguards.
@@ -220,9 +222,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold">
               <Lock className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-slate-900">4. Protected Banking Escrow</h3>
+            <h3 className="text-base font-bold text-slate-900">4. Sandbox Payment / Settlement</h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Confirmed orders are 100% pre-funded into banking partner escrow before release. Officers do not hold funds. Custody transfer at pickup triggers seller payout.
+              Demo orders use a payment-partner sandbox simulation. Officers do not hold funds. After verified handover, a settlement instruction is generated.
             </p>
           </div>
 
@@ -255,7 +257,7 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
           <div>
             <div className="text-xs font-bold uppercase tracking-widest text-emerald-700">
-              Active Supply Pipeline
+              Demo Transaction Pipeline
             </div>
             <h2 className="text-2xl font-extrabold text-slate-900">
               Verified Crop Lots Available for B2B Bidding
@@ -265,7 +267,7 @@ export default function HomePage() {
             href="/explore"
             className="text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5"
           >
-            <span>View All All-India Listings</span>
+            <span>View All Crop Lots</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
